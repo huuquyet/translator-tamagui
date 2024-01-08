@@ -1,4 +1,4 @@
-import {  TamaguiProvider, TamaguiProviderProps,  config } from '@my/ui'
+import { TamaguiProvider, TamaguiProviderProps, config } from '@my/ui'
 import { NextThemeProvider, useRootTheme, useThemeSetting } from '@tamagui/next-theme'
 import { createThemeStore, type mode, useThemeStore } from 'app/zustand'
 import { useEffect } from 'react'
@@ -27,7 +27,7 @@ export function Provider({ children, ...rest }: Omit<TamaguiProviderProps, 'conf
       }}
     >
       <TamaguiProvider config={config} defaultTheme={current()} disableInjectCSS {...rest}>
-          {children}
+        {children}
       </TamaguiProvider>
     </NextThemeProvider>
   )

@@ -16,8 +16,7 @@ export default function HomeLayout() {
     <Provider>
       <Stack
         screenOptions={{
-          headerTitleStyle: {
-          },
+          headerTitleStyle: {},
         }}
       />
       <StatusBar style="auto" />
