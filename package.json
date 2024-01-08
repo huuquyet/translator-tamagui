@@ -1,5 +1,6 @@
 {
-  "name": "expo-next-tamagui-monorepo",
+  "name": "transformers-tamgui-translator",
+  "description": "Transformers.js Tamgui Expo Next Zustand monorepo",
   "version": "0.2.7",
   "private": true,
   "workspaces": [

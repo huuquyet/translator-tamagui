@@ -18,8 +18,6 @@
   },
   "dependencies": {
     "@my/config": "*",
-    "@tamagui/toast": "latest",
-    "expo-constants": "~14.4.2",
     "tamagui": "latest"
   },
   "devDependencies": {

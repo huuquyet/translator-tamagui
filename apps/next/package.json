@@ -25,7 +25,6 @@
     "@tamagui/config": "latest",
     "@tamagui/core": "latest",
     "@tamagui/font-inter": "latest",
-    "@tamagui/font-silkscreen": "latest",
     "@tamagui/next-plugin": "latest",
     "@tamagui/next-theme": "latest",
     "@types/react": "^18.2.47"

@@ -39,7 +39,7 @@ let nextConfig = {
       skipDefaultConversion: true,
     },
   },
-  transpilePackages: ['expo-constants', 'expo-modules-core', 'react-native-web', 'solito'],
+  transpilePackages: ['expo-modules-core', 'react-native-web', 'solito'],
   experimental: {
     // optimizeCss: true,
     scrollRestoration: true,

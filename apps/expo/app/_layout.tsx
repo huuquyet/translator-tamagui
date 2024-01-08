@@ -7,7 +7,6 @@ export default function HomeLayout() {
   const [loaded] = useFonts({
     Inter: require('@tamagui/font-inter/otf/Inter-Medium.otf'),
     InterBold: require('@tamagui/font-inter/otf/Inter-Bold.otf'),
-    Silkscreen: require('@tamagui/font-silkscreen/files/slkscr.ttf'),
   })
   if (!loaded) {
     return null
@@ -18,7 +17,6 @@ export default function HomeLayout() {
       <Stack
         screenOptions={{
           headerTitleStyle: {
-            fontFamily: '$silkscreen',
           },
         }}
       />

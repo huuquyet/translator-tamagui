@@ -14,7 +14,6 @@
     "@tamagui/next-theme": "latest",
     "burnt": "^0.12.2",
     "immer": "^10.0.3",
-    "moti": "^0.27.2",
     "react": "^18.2.0",
     "react-native": "0.72.6",
     "react-native-mmkv": "^2.11.0",
