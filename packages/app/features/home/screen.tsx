@@ -1,6 +1,7 @@
-import { Anchor, Button, H1, Paragraph, Separator, Text, XStack, YStack } from '@my/ui'
+import { Button, H1, Paragraph, Separator, Text, XStack, YStack } from '@my/ui'
 import { Monitor, Moon, Sun } from '@tamagui/lucide-icons'
 import { useThemeStore } from 'app/zustand'
+import { Translator } from './Translator'
 
 const icons = {
   dark: <Moon />,
@@ -14,14 +15,11 @@ export function HomeScreen() {
   return (
     <YStack f={1} jc="center" ai="center" p="$4" space>
       <YStack space="$4" bc="$" jc="center">
-        <H1 ta="center">Welcome to Tamagui.</H1>
-        <Paragraph ta="center">
-          Here's a basic starter to show navigating from one screen to another. This screen uses the
-          same code on Next.js and React Native.
-        </Paragraph>
+        <H1 ta="center">Transformers.js + Tamagui</H1>
+        <Paragraph ta="center">ML-powered multilingual translation in React!</Paragraph>
       </YStack>
 
-      <XStack space="$4" ai="center"></XStack>
+      <Translator />
 
       <Button pos="absolute" b={30} l={20} icon={icons[scheme]} onPress={toggleScheme} circular />
     </YStack>
