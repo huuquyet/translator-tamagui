@@ -88,8 +88,8 @@ export const Translator = () => {
 
   return (
     <>
-      <XStack>
-        <YStack>
+      <XStack space>
+        <YStack space>
           <LanguageSelector
             type={'Source'}
             defaultLanguage={'eng_Latn'}
@@ -98,7 +98,7 @@ export const Translator = () => {
           <TextArea value={input} size="$4" onChange={(e) => setInput(e.target.value)} />
         </YStack>
 
-        <YStack>
+        <YStack space>
           <LanguageSelector
             type={'Target'}
             defaultLanguage={'fra_Latn'}
@@ -112,7 +112,7 @@ export const Translator = () => {
         Translate
       </Button>
 
-      <YStack>
+      <YStack space>
         {ready === false && <Paragraph>Loading models... (only run once)</Paragraph>}
         {progressItems.map((data) => (
           <YStack key={data.file}>
