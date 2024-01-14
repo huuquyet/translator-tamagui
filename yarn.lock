@@ -1844,18 +1844,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@biomejs/biome@npm:1.5.0":
-  version: 1.5.0
-  resolution: "@biomejs/biome@npm:1.5.0"
+"@biomejs/biome@npm:1.5.1":
+  version: 1.5.1
+  resolution: "@biomejs/biome@npm:1.5.1"
   dependencies:
-    "@biomejs/cli-darwin-arm64": "npm:1.5.0"
-    "@biomejs/cli-darwin-x64": "npm:1.5.0"
-    "@biomejs/cli-linux-arm64": "npm:1.5.0"
-    "@biomejs/cli-linux-arm64-musl": "npm:1.5.0"
-    "@biomejs/cli-linux-x64": "npm:1.5.0"
-    "@biomejs/cli-linux-x64-musl": "npm:1.5.0"
-    "@biomejs/cli-win32-arm64": "npm:1.5.0"
-    "@biomejs/cli-win32-x64": "npm:1.5.0"
+    "@biomejs/cli-darwin-arm64": "npm:1.5.1"
+    "@biomejs/cli-darwin-x64": "npm:1.5.1"
+    "@biomejs/cli-linux-arm64": "npm:1.5.1"
+    "@biomejs/cli-linux-arm64-musl": "npm:1.5.1"
+    "@biomejs/cli-linux-x64": "npm:1.5.1"
+    "@biomejs/cli-linux-x64-musl": "npm:1.5.1"
+    "@biomejs/cli-win32-arm64": "npm:1.5.1"
+    "@biomejs/cli-win32-x64": "npm:1.5.1"
   dependenciesMeta:
     "@biomejs/cli-darwin-arm64":
       optional: true
@@ -1875,62 +1875,62 @@ __metadata:
       optional: true
   bin:
     biome: bin/biome
-  checksum: db7e9635fe1fb844df887326d901be8b7adf49c719a056c7c3176b042e46d0d8923729870e6aa61c432fd398bc52791288e49e84062d2736efdfb51faf1e3469
+  checksum: cadf8369f3f3c6929627b547c5c2104b995df1f6fbc20c8550a1504de95836bd7e6d7a40683ce83dc1c2a3395fca9e3f6a3cb6f2bf86a37d0192a824995c2993
   languageName: node
   linkType: hard
 
-"@biomejs/cli-darwin-arm64@npm:1.5.0":
-  version: 1.5.0
-  resolution: "@biomejs/cli-darwin-arm64@npm:1.5.0"
+"@biomejs/cli-darwin-arm64@npm:1.5.1":
+  version: 1.5.1
+  resolution: "@biomejs/cli-darwin-arm64@npm:1.5.1"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
-"@biomejs/cli-darwin-x64@npm:1.5.0":
-  version: 1.5.0
-  resolution: "@biomejs/cli-darwin-x64@npm:1.5.0"
+"@biomejs/cli-darwin-x64@npm:1.5.1":
+  version: 1.5.1
+  resolution: "@biomejs/cli-darwin-x64@npm:1.5.1"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
-"@biomejs/cli-linux-arm64-musl@npm:1.5.0":
-  version: 1.5.0
-  resolution: "@biomejs/cli-linux-arm64-musl@npm:1.5.0"
+"@biomejs/cli-linux-arm64-musl@npm:1.5.1":
+  version: 1.5.1
+  resolution: "@biomejs/cli-linux-arm64-musl@npm:1.5.1"
   conditions: os=linux & cpu=arm64 & libc=musl
   languageName: node
   linkType: hard
 
-"@biomejs/cli-linux-arm64@npm:1.5.0":
-  version: 1.5.0
-  resolution: "@biomejs/cli-linux-arm64@npm:1.5.0"
+"@biomejs/cli-linux-arm64@npm:1.5.1":
+  version: 1.5.1
+  resolution: "@biomejs/cli-linux-arm64@npm:1.5.1"
   conditions: os=linux & cpu=arm64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@biomejs/cli-linux-x64-musl@npm:1.5.0":
-  version: 1.5.0
-  resolution: "@biomejs/cli-linux-x64-musl@npm:1.5.0"
+"@biomejs/cli-linux-x64-musl@npm:1.5.1":
+  version: 1.5.1
+  resolution: "@biomejs/cli-linux-x64-musl@npm:1.5.1"
   conditions: os=linux & cpu=x64 & libc=musl
   languageName: node
   linkType: hard
 
-"@biomejs/cli-linux-x64@npm:1.5.0":
-  version: 1.5.0
-  resolution: "@biomejs/cli-linux-x64@npm:1.5.0"
+"@biomejs/cli-linux-x64@npm:1.5.1":
+  version: 1.5.1
+  resolution: "@biomejs/cli-linux-x64@npm:1.5.1"
   conditions: os=linux & cpu=x64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@biomejs/cli-win32-arm64@npm:1.5.0":
-  version: 1.5.0
-  resolution: "@biomejs/cli-win32-arm64@npm:1.5.0"
+"@biomejs/cli-win32-arm64@npm:1.5.1":
+  version: 1.5.1
+  resolution: "@biomejs/cli-win32-arm64@npm:1.5.1"
   conditions: os=win32 & cpu=arm64
   languageName: node
   linkType: hard
 
-"@biomejs/cli-win32-x64@npm:1.5.0":
-  version: 1.5.0
-  resolution: "@biomejs/cli-win32-x64@npm:1.5.0"
+"@biomejs/cli-win32-x64@npm:1.5.1":
+  version: 1.5.1
+  resolution: "@biomejs/cli-win32-x64@npm:1.5.1"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
@@ -5596,9 +5596,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@xenova/transformers@npm:^2.13.4":
-  version: 2.13.4
-  resolution: "@xenova/transformers@npm:2.13.4"
+"@xenova/transformers@npm:^2.14.0":
+  version: 2.14.0
+  resolution: "@xenova/transformers@npm:2.14.0"
   dependencies:
     "@huggingface/jinja": "npm:^0.1.0"
     onnxruntime-node: "npm:1.14.0"
@@ -5607,7 +5607,7 @@ __metadata:
   dependenciesMeta:
     onnxruntime-node:
       optional: true
-  checksum: b923368497f1e877bf821bfe4ef3f76286d5765eaef40153f080d2116b0961e1c2a24ba413c028541c2e9d6ad82c4bc8d0bb2ccc48b8d2dcb69d44ae33e133c6
+  checksum: cf3f6cf451009c7d583de5419560053ecb5689da350b718b0ee59a1d1493ca7c1e530f9c9c045f477fc5c501c15485d69e5746880f9e10fde37bd286111d1823
   languageName: node
   linkType: hard
 
@@ -5879,7 +5879,7 @@ __metadata:
     "@tamagui/linear-gradient": "npm:latest"
     "@tamagui/lucide-icons": "npm:latest"
     "@tamagui/next-theme": "npm:latest"
-    "@xenova/transformers": "npm:^2.13.4"
+    "@xenova/transformers": "npm:^2.14.0"
     burnt: "npm:^0.12.2"
     expo-linear-gradient: "npm:~12.3.0"
     immer: "npm:^10.0.3"
@@ -8227,14 +8227,14 @@ __metadata:
     babel-plugin-module-resolver: "npm:^5.0.0"
     babel-plugin-transform-inline-environment-variables: "npm:^0.4.4"
     burnt: "npm:^0.12.2"
-    expo: "npm:^49.0.21"
+    expo: "npm:^49.0.22"
     expo-font: "npm:~11.4.0"
     expo-linking: "npm:~5.0.2"
     expo-router: "npm:^2.0.14"
     expo-splash-screen: "npm:~0.20.5"
     expo-status-bar: "npm:~1.6.0"
     expo-system-ui: "npm:~2.4.0"
-    metro-minify-terser: "npm:^0.80.3"
+    metro-minify-terser: "npm:^0.80.4"
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
     react-native: "npm:0.72.6"
@@ -8376,13 +8376,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"expo-modules-core@npm:1.5.12":
-  version: 1.5.12
-  resolution: "expo-modules-core@npm:1.5.12"
+"expo-modules-core@npm:1.5.13":
+  version: 1.5.13
+  resolution: "expo-modules-core@npm:1.5.13"
   dependencies:
     compare-versions: "npm:^3.4.0"
     invariant: "npm:^2.2.4"
-  checksum: 56a99f6ff0515cf120b445b8c242d87ea435490a9d7191c51e78f715a17659c53ff4012f806bc0e6eb483e8d71a6dd140b757b9dcc6da051b827fe8d981a5fed
+  checksum: 4c014be4e8c67bfa7f435ecc777271454ede9818c5baa8afa5dc9f960267278cce4b2cd72851484328f1a20db815da1c47a46de4393be8f8500fca2a5be61d97
   languageName: node
   linkType: hard
 
@@ -8454,9 +8454,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"expo@npm:^49.0.21":
-  version: 49.0.21
-  resolution: "expo@npm:49.0.21"
+"expo@npm:^49.0.22":
+  version: 49.0.22
+  resolution: "expo@npm:49.0.22"
   dependencies:
     "@babel/runtime": "npm:^7.20.0"
     "@expo/cli": "npm:0.10.16"
@@ -8471,7 +8471,7 @@ __metadata:
     expo-font: "npm:~11.4.0"
     expo-keep-awake: "npm:~12.3.0"
     expo-modules-autolinking: "npm:1.5.1"
-    expo-modules-core: "npm:1.5.12"
+    expo-modules-core: "npm:1.5.13"
     fbemitter: "npm:^3.0.0"
     invariant: "npm:^2.2.4"
     md5-file: "npm:^3.2.3"
@@ -8480,7 +8480,7 @@ __metadata:
     uuid: "npm:^3.4.0"
   bin:
     expo: bin/cli
-  checksum: 971a84fba2a243588657fe0a918da4756d23ea81d4884630fb2b0b9247bc681e94aea08da610c1b49cb0e9144a3114c7ce378eba77621c233b8575210f8b92af
+  checksum: 16a259f54cde2f4ebe37d883a7d0c171de7ab15b68ab3b2314f33a67e8856d9e296ca39002b3ee1c0572690f82108f26e37f17b558d07c28cb76ecc0b9e19b20
   languageName: node
   linkType: hard
 
@@ -10772,12 +10772,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"metro-minify-terser@npm:^0.80.3":
-  version: 0.80.3
-  resolution: "metro-minify-terser@npm:0.80.3"
+"metro-minify-terser@npm:^0.80.4":
+  version: 0.80.4
+  resolution: "metro-minify-terser@npm:0.80.4"
   dependencies:
     terser: "npm:^5.15.0"
-  checksum: 8e6610ea16e857acb49031757779145305dcea127c023d70bd03765bf9332b25978ef1cb3d9a188a5479b29e2c9f4218c1004701a14727ec73741b1cd72b23df
+  checksum: 1a8e3dcefce1c4a599e948641fee58cc03f4121371d50adb32af5f8fc3e62958c1a0d9d16a9179a9bab62b9e82c82f8cb5dfb8b517d37552f7de78dc7e0524bf
   languageName: node
   linkType: hard
 
@@ -14594,7 +14594,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "transformers-tamgui-translator@workspace:."
   dependencies:
-    "@biomejs/biome": "npm:1.5.0"
+    "@biomejs/biome": "npm:1.5.1"
     typescript: "npm:^5.3.3"
   languageName: unknown
   linkType: soft

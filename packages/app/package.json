@@ -13,7 +13,7 @@
     "@tamagui/linear-gradient": "latest",
     "@tamagui/lucide-icons": "latest",
     "@tamagui/next-theme": "latest",
-    "@xenova/transformers": "^2.13.4",
+    "@xenova/transformers": "^2.14.0",
     "burnt": "^0.12.2",
     "expo-linear-gradient": "~12.3.0",
     "immer": "^10.0.3",
