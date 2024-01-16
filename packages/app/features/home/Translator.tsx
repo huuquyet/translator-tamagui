@@ -93,7 +93,7 @@ export const Translator = () => {
           <LanguageSelector
             type={'Source'}
             defaultLanguage={'eng_Latn'}
-            onChange={(x) => setSourceLanguage(x.target.value)}
+            onChange={setSourceLanguage}
           />
           <TextArea value={input} size="$4" onChange={(e) => setInput(e.target.value)} />
         </YStack>
@@ -102,7 +102,7 @@ export const Translator = () => {
           <LanguageSelector
             type={'Target'}
             defaultLanguage={'fra_Latn'}
-            onChange={(x) => setTargetLanguage(x.target.value)}
+            onChange={setTargetLanguage}
           />
           <TextArea value={output} size="$4" readOnly />
         </YStack>
@@ -114,7 +114,7 @@ export const Translator = () => {
 
       <YStack space>
         {ready === false && <Paragraph>Loading models... (only run once)</Paragraph>}
-        {progressItems.map((data) => (
+        {progressItems.map((data: any) => (
           <YStack key={data.file}>
             <MyProgress text={data.file} percentage={data.progress} />
           </YStack>

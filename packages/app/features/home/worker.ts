@@ -1,4 +1,4 @@
-import { pipeline } from '@xenova/transformers'
+import { PipelineType, TranslationPipeline, pipeline } from '@xenova/transformers'
 
 /**
  * This class uses the Singleton pattern to ensure that only one instance of the
@@ -6,20 +6,16 @@ import { pipeline } from '@xenova/transformers'
  * operation and we don't want to do it every time we want to translate a sentence.
  */
 class MyTranslationPipeline {
-  static task = 'translation'
+  static task: PipelineType = 'translation'
   static model = 'Xenova/nllb-200-distilled-600M'
-  static instance = null
+  static instance: TranslationPipeline
 
   static async getInstance(progress_callback = null) {
-    if (MyTranslationPipeline.instance === null) {
-      MyTranslationPipeline.instance = pipeline(
-        MyTranslationPipeline.task,
-        MyTranslationPipeline.model,
-        { progress_callback }
-      )
+    if (!this.instance) {
+      this.instance = pipeline(this.task, this.model, { progress_callback })
     }
 
-    return MyTranslationPipeline.instance
+    return this.instance
   }
 }
 

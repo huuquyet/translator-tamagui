@@ -27,6 +27,6 @@
     "@tamagui/font-inter": "latest",
     "@tamagui/next-plugin": "latest",
     "@tamagui/next-theme": "latest",
-    "@types/react": "^18.2.47"
+    "@types/react": "^18.2.48"
   }
 }

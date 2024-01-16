@@ -218,7 +218,7 @@ export const LanguageSelector = ({ type, onChange, defaultLanguage }) => {
       <Paragraph>{type}: </Paragraph>
       <Select size="$4" onValueChange={onChange} defaultValue={defaultLanguage}>
         <Select.Trigger iconAfter={ChevronDown}>
-          <Select.Value placeholder="Languages">{defaultLanguage}</Select.Value>
+          <Select.Value placeholder="Languages" />
         </Select.Trigger>
 
         <Adapt when="sm" platform="touch">
