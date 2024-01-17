@@ -11,11 +11,15 @@ class MyTranslationPipeline {
   static instance: TranslationPipeline
 
   static async getInstance(progress_callback = null) {
-    if (!this.instance) {
-      this.instance = pipeline(this.task, this.model, { progress_callback })
+    if (!MyTranslationPipeline.instance) {
+      MyTranslationPipeline.instance = pipeline(
+        MyTranslationPipeline.task,
+        MyTranslationPipeline.model,
+        { progress_callback }
+      )
     }
 
-    return this.instance
+    return MyTranslationPipeline.instance
   }
 }
 
