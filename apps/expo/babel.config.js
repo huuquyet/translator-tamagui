@@ -14,14 +14,13 @@ module.exports = (api) => {
           alias: {
             // define aliases to shorten the import paths
             app: '../../packages/app',
-            '@my/config': '../../packages/config',
             '@my/ui': '../../packages/ui',
           },
           extensions: ['.js', '.jsx', '.tsx', '.ios.js', '.android.js'],
         },
       ],
       // NOTE: this is only necessary if you are using reanimated for animations
-      // 'react-native-reanimated/plugin',
+      'react-native-reanimated/plugin',
       ...(process.env.EAS_BUILD_PLATFORM === 'android'
         ? []
         : [
@@ -29,7 +28,7 @@ module.exports = (api) => {
               '@tamagui/babel-plugin',
               {
                 components: ['@my/ui', 'tamagui'],
-                config: '../../packages/config/src/tamagui.config.ts',
+                config: '../../packages/ui/src/tamagui.config.ts',
               },
             ],
           ]),

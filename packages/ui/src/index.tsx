@@ -1,2 +1,2 @@
 export * from 'tamagui'
-export { config } from '@my/config'
+export * from './tamagui.config'
