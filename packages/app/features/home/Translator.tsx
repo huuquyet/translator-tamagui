@@ -58,7 +58,7 @@ export const Translator = () => {
             defaultLanguage={'eng_Latn'}
             onChange={setSourceLanguage}
           />
-          <TextArea value={input} size="$4" onChange={(e) => setInput(e.target.value)} />
+          <TextArea value={input} size="$4" onChange={setInput} />
         </YStack>
 
         <YStack space>

@@ -233,7 +233,7 @@ interface TranslatorInterface {
 }
 
 const getDefaultState = {
-  ready: false,
+  ready: true,
   disabled: false,
   progressItems: [],
   input: 'I love walking with my dog.',

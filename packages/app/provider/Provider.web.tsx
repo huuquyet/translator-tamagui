@@ -1,6 +1,6 @@
 import { TamaguiProvider, TamaguiProviderProps, config } from '@my/ui'
 import { NextThemeProvider, useRootTheme, useThemeSetting } from '@tamagui/next-theme'
-import { createThemeStore, type mode, useThemeStore } from 'app/zustand'
+import { createThemeStore, createTranslatorStore, type mode, useThemeStore } from 'app/zustand'
 import { useEffect } from 'react'
 
 export function Provider({ children, ...rest }: Omit<TamaguiProviderProps, 'config'>) {
@@ -10,6 +10,7 @@ export function Provider({ children, ...rest }: Omit<TamaguiProviderProps, 'conf
 
   useEffect(() => {
     createThemeStore.persist.rehydrate()
+    createTranslatorStore.persist.rehydrate()
   }, [])
 
   const current = () => {
