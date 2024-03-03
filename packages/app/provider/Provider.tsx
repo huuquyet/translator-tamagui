@@ -9,7 +9,6 @@ export function Provider({ children, ...rest }: Omit<TamaguiProviderProps, 'conf
 
   useEffect(() => {
     createThemeStore.persist.rehydrate()
-    createTranslatorStore.persist.rehydrate()
   }, [])
 
   const current = () => {

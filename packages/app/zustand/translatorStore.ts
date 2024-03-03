@@ -244,72 +244,63 @@ const getDefaultState = {
 
 export const createTranslatorStore = create<TranslatorInterface>()(
   devtools(
-    persist(
-      immer((set) => ({
-        ...getDefaultState,
-        setDisabled: (disabled) => {
-          set({ disabled })
-        },
-        setInput: (input) => {
-          set({ input })
-        },
-        setSourceLanguage: (sourceLanguage) => {
-          set({ sourceLanguage })
-        },
-        setTargetLanguage: (targetLanguage) => {
-          set({ targetLanguage })
-        },
+    immer((set) => ({
+      ...getDefaultState,
+      setDisabled: (disabled) => {
+        set({ disabled })
+      },
+      setInput: (input) => {
+        set({ input })
+      },
+      setSourceLanguage: (sourceLanguage) => {
+        set({ sourceLanguage })
+      },
+      setTargetLanguage: (targetLanguage) => {
+        set({ targetLanguage })
+      },
 
-        // Create a callback function for messages from the worker thread.
-        onMessageReceived: (event) => {
-          switch (event.data.status) {
-            case 'initiate':
-              set((state) => {
-                state.ready = false
-                state.progressItems.push(event.data)
-              })
-              break
+      // Create a callback function for messages from the worker thread.
+      onMessageReceived: (event) => {
+        switch (event.data.status) {
+          case 'initiate':
+            set((state) => {
+              state.ready = false
+              state.progressItems.push(event.data)
+            })
+            break
 
-            case 'progress':
-              // Model file progress: update one of the progress items.
-              set((state) => {
-                const progressItem = state.progressItems.find(
-                  (item) => item.file === event.data.file
-                )
-                progressItem.progress = event.data.progress
-              })
-              break
+          case 'progress':
+            // Model file progress: update one of the progress items.
+            set((state) => {
+              const progressItem = state.progressItems.find((item) => item.file === event.data.file)
+              progressItem.progress = event.data.progress
+            })
+            break
 
-            case 'done':
-              // Model file loaded: remove the progress item from the list.
-              set((state) => {
-                state.progressItems.filter((item) => item.file !== event.data.file)
-              })
-              break
+          case 'done':
+            // Model file loaded: remove the progress item from the list.
+            set((state) => {
+              state.progressItems.filter((item) => item.file !== event.data.file)
+            })
+            break
 
-            case 'ready':
-              // Pipeline ready: the worker is ready to accept messages.
-              set({ ready: true })
-              break
+          case 'ready':
+            // Pipeline ready: the worker is ready to accept messages.
+            set({ ready: true })
+            break
 
-            case 'update':
-              // Generation update: update the output text.
-              set({ output: event.data.output })
-              break
+          case 'update':
+            // Generation update: update the output text.
+            set({ output: event.data.output })
+            break
 
-            case 'complete':
-              // Generation complete: re-enable the "Translate" button
-              set({ disabled: false })
-              break
-          }
-        },
-      })),
-      {
-        name: 'translator',
-        storage: createJSONStorage(() => mmkvStorage),
-        skipHydration: true,
-      }
-    ),
+          case 'complete':
+            // Generation complete: re-enable the "Translate" button
+            set({ disabled: false })
+            break
+        }
+      },
+    })),
     { enabled: false }
   )
 )
