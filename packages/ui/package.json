@@ -22,7 +22,7 @@
     "@tamagui/react-native-media-driver": "latest",
     "@tamagui/shorthands": "latest",
     "@tamagui/themes": "latest",
-    "react-native-reanimated": "~3.3.0",
+    "react-native-reanimated": "~3.6.3",
     "tamagui": "latest"
   },
   "devDependencies": {
