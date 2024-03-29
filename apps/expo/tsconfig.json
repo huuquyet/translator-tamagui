@@ -1,9 +1,0 @@
-{
-  "extends": "../../tsconfig.base",
-  "include": ["app/**/*.ts", "app/**/*.tsx"],
-  "compilerOptions": {
-    "composite": true,
-    "noEmit": true
-  },
-  "references": []
-}
