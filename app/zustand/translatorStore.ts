@@ -220,16 +220,16 @@ interface ProgressInterface {
 interface TranslatorInterface {
   ready: boolean
   disabled: boolean
-  progressItems: Array<any>
+  progressItems: Array<ProgressInterface>
   input: string
   output: string
   sourceLanguage: string
   targetLanguage: string
-  setDisabled: (disabled) => void
-  setInput: (input) => void
-  setSourceLanguage: (sourceLanguage) => void
-  setTargetLanguage: (targetLanguage) => void
-  onMessageReceived: (event) => void
+  setDisabled: (disabled: boolean) => void
+  setInput: (input: string) => void
+  setSourceLanguage: (sourceLanguage: string) => void
+  setTargetLanguage: (targetLanguage: string) => void
+  onMessageReceived: (event: any) => void
 }
 
 const getDefaultState = {
@@ -274,7 +274,7 @@ const createTranslatorStore = create<TranslatorInterface>()(
               // Model file progress: update one of the progress items.
               set((state) => {
                 const progressItem = state.progressItems.find(
-                  (item) => item.file === event.data.file
+                  (item: ProgressInterface) => item.file === event.data.file
                 )
                 progressItem.progress = event.data.progress
               })
@@ -283,7 +283,9 @@ const createTranslatorStore = create<TranslatorInterface>()(
             case 'done':
               // Model file loaded: remove the progress item from the list.
               set((state) => {
-                state.progressItems.filter((item) => item.file !== event.data.file)
+                state.progressItems.filter(
+                  (item: ProgressInterface) => item.file !== event.data.file
+                )
               })
               break
 

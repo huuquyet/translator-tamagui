@@ -4,7 +4,11 @@ import { Platform } from 'react-native'
 import { Adapt, Paragraph, Select, Sheet, YStack } from 'tamagui'
 import { LANGUAGES } from '../zustand'
 
-export const LanguageSelector = ({ type, onChange, defaultLanguage }) => {
+export const LanguageSelector = ({
+  type,
+  onChange,
+  defaultLanguage,
+}: { type: string; defaultLanguage: string; onChange: any }) => {
   return (
     <YStack>
       <Paragraph>{type}: </Paragraph>

@@ -1,3 +1,4 @@
+import * as FileSystem from 'expo-file-system'
 import { useEffect, useRef } from 'react'
 import { Button, Paragraph, TextArea, XStack, YStack } from 'tamagui'
 import { useTranslatorStore } from '../zustand'
@@ -28,7 +29,7 @@ export const Translator = () => {
   useEffect(() => {
     if (!worker.current) {
       // Create the worker if it does not yet exist.
-      worker.current = new Worker(new URL('./worker.ts', import.meta.url), {
+      worker.current = new Worker(FileSystem.documentDirectory + 'worker.ts', {
         type: 'module',
       })
     }
@@ -51,8 +52,8 @@ export const Translator = () => {
 
   return (
     <>
-      <XStack space>
-        <YStack space>
+      <XStack gap>
+        <YStack gap>
           <LanguageSelector
             type={'Source'}
             defaultLanguage={'eng_Latn'}
@@ -61,7 +62,7 @@ export const Translator = () => {
           <TextArea value={input} size="$4" onChange={setInput} />
         </YStack>
 
-        <YStack space>
+        <YStack gap>
           <LanguageSelector
             type={'Target'}
             defaultLanguage={'fra_Latn'}
@@ -75,7 +76,7 @@ export const Translator = () => {
         Translate
       </Button>
 
-      <YStack space>
+      <YStack gap>
         {ready === false && <Paragraph>Loading models... (only run once)</Paragraph>}
         {progressItems.map((data: any) => (
           <YStack key={data.file}>
