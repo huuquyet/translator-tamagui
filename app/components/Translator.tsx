@@ -1,3 +1,4 @@
+import { WebWorker } from '@jacobp100/react-native-webworker'
 import { useEffect, useRef } from 'react'
 import { Button, Paragraph, TextArea, XStack, YStack } from 'tamagui'
 import { useTranslatorStore } from '../zustand'
@@ -28,9 +29,7 @@ export const Translator = () => {
   useEffect(() => {
     if (!worker.current) {
       // Create the worker if it does not yet exist.
-      worker.current = new Worker(new URL('./worker.ts', import.meta.url), {
-        type: 'module',
-      })
+      worker.current = new WebWorker('./worker.js', {})
     }
 
     // Attach the callback function as an event listener.

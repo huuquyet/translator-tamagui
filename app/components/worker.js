@@ -1,4 +1,5 @@
-import { type PipelineType, type TranslationPipeline, pipeline } from '@xenova/transformers'
+import { pipeline } from '@xenova/transformers'
+import { self } from 'react-native-threads'
 
 /**
  * This class uses the Singleton pattern to ensure that only one instance of the
@@ -6,9 +7,9 @@ import { type PipelineType, type TranslationPipeline, pipeline } from '@xenova/t
  * operation and we don't want to do it every time we want to translate a sentence.
  */
 class MyTranslationPipeline {
-  static task: PipelineType = 'translation'
+  static task = 'translation'
   static model = 'Xenova/nllb-200-distilled-600M'
-  static instance: TranslationPipeline
+  static instance
 
   static async getInstance(progress_callback = null) {
     if (!MyTranslationPipeline.instance) {
@@ -27,7 +28,7 @@ class MyTranslationPipeline {
 self.addEventListener('message', async (event) => {
   // Retrieve the translation pipeline. When called for the first time,
   // this will load the pipeline and save it for future use.
-  const translator = await MyTranslationPipeline.getInstance((x: any) => {
+  const translator = await MyTranslationPipeline.getInstance((x) => {
     // We also add a progress callback to the pipeline so that we can
     // track model loading.
     self.postMessage(x)
@@ -39,7 +40,7 @@ self.addEventListener('message', async (event) => {
     src_lang: event.data.src_lang,
 
     // Allows for partial output
-    callback_function: (x: any) => {
+    callback_function: (x) => {
       self.postMessage({
         status: 'update',
         output: translator.tokenizer.decode(x[0].output_token_ids, { skip_special_tokens: true }),
