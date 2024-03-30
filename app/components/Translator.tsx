@@ -1,4 +1,3 @@
-import * as FileSystem from 'expo-file-system'
 import { useEffect, useRef } from 'react'
 import { Button, Paragraph, TextArea, XStack, YStack } from 'tamagui'
 import { useTranslatorStore } from '../zustand'
@@ -29,7 +28,7 @@ export const Translator = () => {
   useEffect(() => {
     if (!worker.current) {
       // Create the worker if it does not yet exist.
-      worker.current = new Worker(FileSystem.documentDirectory + 'worker.ts', {
+      worker.current = new Worker(new URL('./worker.ts', import.meta.url), {
         type: 'module',
       })
     }
