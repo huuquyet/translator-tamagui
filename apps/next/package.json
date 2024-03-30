@@ -11,11 +11,11 @@
   "dependencies": {
     "@my/ui": "*",
     "app": "*",
-    "next": "^14.1.1",
+    "next": "^14.1.4",
     "raf": "^3.4.1",
     "react": "^18.2.0",
-    "react-native": "0.73.4",
-    "solito": "^4.2.1",
+    "react-native": "0.73.6",
+    "solito": "^4.2.2",
     "tamagui": "latest",
     "vercel": "latest"
   },
@@ -26,6 +26,6 @@
     "@tamagui/font-inter": "latest",
     "@tamagui/next-plugin": "latest",
     "@tamagui/next-theme": "latest",
-    "@types/react": "^18.2.61"
+    "@types/react": "^18.2.73"
   }
 }
