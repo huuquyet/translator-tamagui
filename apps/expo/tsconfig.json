@@ -1,6 +1,6 @@
 {
   "extends": "../../tsconfig.base",
-  "include": ["app/**/*.ts", "app/**/*.tsx"],
+  "include": ["**/*.ts", "**/*.tsx"],
   "compilerOptions": {
     "composite": true,
     "noEmit": true

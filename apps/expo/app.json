@@ -3,7 +3,7 @@
     "name": "yourprojectsname",
     "slug": "yourprojectsname",
     "scheme": "yourprojectsname",
-    "version": "0.2.7",
+    "version": "0.1.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "automatic",
@@ -43,7 +43,7 @@
       [
         "expo-router",
         {
-          "origin": "https://expo-next-tamagui-monorepo.vercel.app/"
+          "origin": "https://tamagui-translator.vercel.app/"
         }
       ]
     ]

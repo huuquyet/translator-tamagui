@@ -1,7 +1,11 @@
 /** @type {import('next').NextConfig} */
 const { withTamagui } = require('@tamagui/next-plugin')
 const { withExpo } = require('@expo/next-adapter')
-const { join } = require('path')
+const { join } = require('node:path')
+const withPWA = require('@ducanh2912/next-pwa').default({
+  dest: 'public',
+  disable: process.env.NODE_ENV === 'development',
+})
 
 const boolVals = {
   true: true,
@@ -26,6 +30,8 @@ const plugins = [
     },
     excludeReactNativeWebExports: ['Switch', 'ProgressBar', 'Picker', 'CheckBox', 'Touchable'],
   }),
+  withPWA,
+  withExpo,
 ]
 
 /** @type {import('next').NextConfig} */
@@ -39,11 +45,12 @@ let nextConfig = {
       skipDefaultConversion: true,
     },
   },
-  transpilePackages: ['expo-modules-core', 'react-native-web', 'solito'],
+  transpilePackages: ['expo-constants', 'expo-modules-core', 'react-native-web', 'solito'],
   experimental: {
     // optimizeCss: true,
     scrollRestoration: true,
   },
+  reactStrictMode: true,
 }
 
 for (const plugin of plugins) {
@@ -53,4 +60,4 @@ for (const plugin of plugins) {
   }
 }
 
-module.exports = withExpo(nextConfig)
+module.exports = nextConfig

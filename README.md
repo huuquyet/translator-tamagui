@@ -1,4 +1,4 @@
-# Tamagui + Solito + Next + Expo Monorepo
+# Translator App built with Transformers.js + Tamagui + Next + Expo + Solito Monorepo
 
 ```sh
 npm create tamagui
@@ -6,13 +6,14 @@ npm create tamagui
 
 ## 🔦 About
 
-This monorepo is a starter for an Expo + Next.js + Tamagui + Solito app.
+This Translator app is a starter for a Transformers.js + Expo + Next.js + Tamagui + Solito app.
 
 Many thanks to [@FernandoTheRojo](https://twitter.com/fernandotherojo) for the Solito starter monorepo which this was forked from. Check out his [talk about using expo + next together at Next.js Conf 2021](https://www.youtube.com/watch?v=0lnbdRweJtA).
 
 ## 📦 Included packages
 
 - [Tamagui](https://tamagui.dev) 🪄
+- Transformers.js
 - [solito](https://solito.dev) for cross-platform navigation
 - Expo SDK
 - Next.js
@@ -58,9 +59,7 @@ See `packages/ui` named `@my/ui` for how this works.
 If you're installing a JavaScript-only dependency that will be used across platforms, install it in `packages/app`:
 
 ```sh
-cd packages/app
-yarn add date-fns
-cd ../..
+yarn workspace app add zustand
 yarn
 ```
 
@@ -69,9 +68,7 @@ yarn
 If you're installing a library with any native code, you must install it in `expo`:
 
 ```sh
-cd apps/expo
-yarn add react-native-reanimated
-cd ..
+yarn workspace expo-app add react-native-reanimated
 yarn
 ```
 

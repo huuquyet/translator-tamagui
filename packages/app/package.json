@@ -1,11 +1,9 @@
 {
   "name": "app",
-  "version": "0.2.7",
+  "version": "0.1.0",
   "main": "index.ts",
   "private": true,
-  "sideEffects": [
-    "*.css"
-  ],
+  "sideEffects": ["*.css"],
   "dependencies": {
     "@my/ui": "*",
     "@react-navigation/native": "^6.1.17",

@@ -1,4 +1,4 @@
-import { PipelineType, TranslationPipeline, pipeline } from '@xenova/transformers'
+import { type PipelineType, type TranslationPipeline, pipeline } from '@xenova/transformers'
 
 /**
  * This class uses the Singleton pattern to ensure that only one instance of the

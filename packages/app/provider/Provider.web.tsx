@@ -1,4 +1,4 @@
-import { TamaguiProvider, TamaguiProviderProps, config } from '@my/ui'
+import { TamaguiProvider, type TamaguiProviderProps, config } from '@my/ui'
 import { NextThemeProvider, useRootTheme, useThemeSetting } from '@tamagui/next-theme'
 import { type mode, useThemeStore } from 'app/zustand'
 import { useEffect } from 'react'
