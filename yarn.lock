@@ -1665,97 +1665,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@biomejs/biome@npm:1.6.3":
-  version: 1.6.3
-  resolution: "@biomejs/biome@npm:1.6.3"
-  dependencies:
-    "@biomejs/cli-darwin-arm64": "npm:1.6.3"
-    "@biomejs/cli-darwin-x64": "npm:1.6.3"
-    "@biomejs/cli-linux-arm64": "npm:1.6.3"
-    "@biomejs/cli-linux-arm64-musl": "npm:1.6.3"
-    "@biomejs/cli-linux-x64": "npm:1.6.3"
-    "@biomejs/cli-linux-x64-musl": "npm:1.6.3"
-    "@biomejs/cli-win32-arm64": "npm:1.6.3"
-    "@biomejs/cli-win32-x64": "npm:1.6.3"
-  dependenciesMeta:
-    "@biomejs/cli-darwin-arm64":
-      optional: true
-    "@biomejs/cli-darwin-x64":
-      optional: true
-    "@biomejs/cli-linux-arm64":
-      optional: true
-    "@biomejs/cli-linux-arm64-musl":
-      optional: true
-    "@biomejs/cli-linux-x64":
-      optional: true
-    "@biomejs/cli-linux-x64-musl":
-      optional: true
-    "@biomejs/cli-win32-arm64":
-      optional: true
-    "@biomejs/cli-win32-x64":
-      optional: true
-  bin:
-    biome: bin/biome
-  checksum: 10/7e8350282ad5ae34b99afd401163eed4e7f1184fed30abb71af08f3855a0d1a792e3c384c4ae29ed6fa9d377631670c1430828e0ca5ba413ee968529ed95f148
-  languageName: node
-  linkType: hard
-
-"@biomejs/cli-darwin-arm64@npm:1.6.3":
-  version: 1.6.3
-  resolution: "@biomejs/cli-darwin-arm64@npm:1.6.3"
-  conditions: os=darwin & cpu=arm64
-  languageName: node
-  linkType: hard
-
-"@biomejs/cli-darwin-x64@npm:1.6.3":
-  version: 1.6.3
-  resolution: "@biomejs/cli-darwin-x64@npm:1.6.3"
-  conditions: os=darwin & cpu=x64
-  languageName: node
-  linkType: hard
-
-"@biomejs/cli-linux-arm64-musl@npm:1.6.3":
-  version: 1.6.3
-  resolution: "@biomejs/cli-linux-arm64-musl@npm:1.6.3"
-  conditions: os=linux & cpu=arm64 & libc=musl
-  languageName: node
-  linkType: hard
-
-"@biomejs/cli-linux-arm64@npm:1.6.3":
-  version: 1.6.3
-  resolution: "@biomejs/cli-linux-arm64@npm:1.6.3"
-  conditions: os=linux & cpu=arm64 & libc=glibc
-  languageName: node
-  linkType: hard
-
-"@biomejs/cli-linux-x64-musl@npm:1.6.3":
-  version: 1.6.3
-  resolution: "@biomejs/cli-linux-x64-musl@npm:1.6.3"
-  conditions: os=linux & cpu=x64 & libc=musl
-  languageName: node
-  linkType: hard
-
-"@biomejs/cli-linux-x64@npm:1.6.3":
-  version: 1.6.3
-  resolution: "@biomejs/cli-linux-x64@npm:1.6.3"
-  conditions: os=linux & cpu=x64 & libc=glibc
-  languageName: node
-  linkType: hard
-
-"@biomejs/cli-win32-arm64@npm:1.6.3":
-  version: 1.6.3
-  resolution: "@biomejs/cli-win32-arm64@npm:1.6.3"
-  conditions: os=win32 & cpu=arm64
-  languageName: node
-  linkType: hard
-
-"@biomejs/cli-win32-x64@npm:1.6.3":
-  version: 1.6.3
-  resolution: "@biomejs/cli-win32-x64@npm:1.6.3"
-  conditions: os=win32 & cpu=x64
-  languageName: node
-  linkType: hard
-
 "@ducanh2912/next-pwa@npm:^10.2.5":
   version: 10.2.5
   resolution: "@ducanh2912/next-pwa@npm:10.2.5"
@@ -10138,13 +10047,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"performance-now@npm:^2.1.0":
-  version: 2.1.0
-  resolution: "performance-now@npm:2.1.0"
-  checksum: 10/534e641aa8f7cba160f0afec0599b6cecefbb516a2e837b512be0adbe6c1da5550e89c78059c7fabc5c9ffdf6627edabe23eb7c518c4500067a898fa65c2b550
-  languageName: node
-  linkType: hard
-
 "performant-array-to-tree@npm:^1.11.0":
   version: 1.11.0
   resolution: "performant-array-to-tree@npm:1.11.0"
@@ -10546,15 +10448,6 @@ __metadata:
   dependencies:
     w-json: "npm:1.3.10"
   checksum: 10/ebe24b41e9f855af9f61747d7f3a511a78bc11c1841eaf3cbf98b385e91a0a982a3f724e2bf24d737642efc9b510585b5c54d25c098cc6850bdad15a22b36636
-  languageName: node
-  linkType: hard
-
-"raf@npm:^3.4.1":
-  version: 3.4.1
-  resolution: "raf@npm:3.4.1"
-  dependencies:
-    performance-now: "npm:^2.1.0"
-  checksum: 10/4c4b4c826b09d2aec6ca809f1a3c3c12136e7ec8d13fbb91f495dd2c99cd43345240e003da3bfd16036a432e635049fc6d9f69f9187f5f22ea88bb146ec75881
   languageName: node
   linkType: hard
 
@@ -12211,8 +12104,8 @@ __metadata:
   linkType: hard
 
 "tar@npm:^6.1.11, tar@npm:^6.1.2":
-  version: 6.2.0
-  resolution: "tar@npm:6.2.0"
+  version: 6.2.1
+  resolution: "tar@npm:6.2.1"
   dependencies:
     chownr: "npm:^2.0.0"
     fs-minipass: "npm:^2.0.0"
@@ -12220,7 +12113,7 @@ __metadata:
     minizlib: "npm:^2.1.1"
     mkdirp: "npm:^1.0.3"
     yallist: "npm:^4.0.0"
-  checksum: 10/2042bbb14830b5cd0d584007db0eb0a7e933e66d1397e72a4293768d2332449bc3e312c266a0887ec20156dea388d8965e53b4fc5097f42d78593549016da089
+  checksum: 10/bfbfbb2861888077fc1130b84029cdc2721efb93d1d1fb80f22a7ac3a98ec6f8972f29e564103bbebf5e97be67ebc356d37fa48dbc4960600a1eb7230fbd1ea0
   languageName: node
   linkType: hard
 
@@ -12369,7 +12262,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "transformers-tamgui-translator@workspace:."
   dependencies:
-    "@biomejs/biome": "npm:1.6.3"
     "@ducanh2912/next-pwa": "npm:^10.2.5"
     "@react-navigation/native": "npm:^6.1.17"
     "@tamagui/config": "npm:latest"
@@ -12387,7 +12279,6 @@ __metadata:
     immer: "npm:^10.0.4"
     next: "npm:^14.1.4"
     onnxruntime-node: "npm:^1.17.0"
-    raf: "npm:^3.4.1"
     react: "npm:^18.2.0"
     react-native: "npm:0.73.6"
     react-native-mmkv: "npm:^2.12.2"
