@@ -1,10 +1,13 @@
-import { Adapt, Paragraph, Select, Sheet, YStack } from 'tamagui'
+import { LANGUAGES } from '@/zustand'
 import { LinearGradient } from '@tamagui/linear-gradient'
 import { Check, ChevronDown, ChevronUp } from '@tamagui/lucide-icons'
-import { LANGUAGES } from '@/zustand'
-import { Platform } from 'react-native'
+import { Adapt, Paragraph, Select, Sheet, YStack } from 'tamagui'
 
-export const LanguageSelector = ({ type, onChange, defaultLanguage }) => {
+export const LanguageSelector = ({
+  type,
+  onChange,
+  defaultLanguage,
+}: { type: string; onChange: any; defaultLanguage: string }) => {
   return (
     <YStack>
       <Paragraph>{type}: </Paragraph>
@@ -14,7 +17,7 @@ export const LanguageSelector = ({ type, onChange, defaultLanguage }) => {
         </Select.Trigger>
 
         <Adapt when="sm" platform="touch">
-          <Sheet native={Platform.OS !== 'web'} modal dismissOnSnapToBottom animation="quick">
+          <Sheet native={false} modal dismissOnSnapToBottom animation="quick">
             <Sheet.Frame>
               <Sheet.ScrollView>
                 <Adapt.Contents />
@@ -53,12 +56,6 @@ export const LanguageSelector = ({ type, onChange, defaultLanguage }) => {
                 </Select.Item>
               ))}
             </Select.Group>
-
-            {Platform.OS !== 'web' && (
-              <YStack pos="absolute" r={0} t={0} b={0} ai="center" jc="center" w="$4" pe="none">
-                <ChevronDown />
-              </YStack>
-            )}
           </Select.Viewport>
           <Select.ScrollDownButton ai="center" jc="center" pos="relative" w="100%" h="$3">
             <YStack zi={10}>

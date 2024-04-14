@@ -1,8 +1,8 @@
 'use client'
 
-import { Button, Paragraph, TextArea, XStack, YStack } from 'tamagui'
 import { useTranslatorStore } from '@/zustand'
 import { useEffect, useRef } from 'react'
+import { Button, Paragraph, TextArea, XStack, YStack } from 'tamagui'
 import { LanguageSelector } from '../components/LanguageSelector'
 import { MyProgress } from '../components/MyProgress'
 

@@ -10,16 +10,12 @@ class MyTranslationPipeline {
   static model = 'Xenova/nllb-200-distilled-600M'
   static instance: TranslationPipeline
 
-  static async getInstance(progress_callback = null) {
-    if (!MyTranslationPipeline.instance) {
-      MyTranslationPipeline.instance = pipeline(
-        MyTranslationPipeline.task,
-        MyTranslationPipeline.model,
-        { progress_callback }
-      )
+  static async getInstance(progress_callback: any = null) {
+    if (!this.instance) {
+      this.instance = pipeline(this.task, this.model, { progress_callback })
     }
 
-    return MyTranslationPipeline.instance
+    return this.instance
   }
 }
 

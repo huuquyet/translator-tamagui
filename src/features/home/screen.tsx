@@ -1,11 +1,11 @@
 'use client'
 
-import { Button, H1, Paragraph, Separator, YStack } from 'tamagui'
-import { Monitor, Moon, Sun } from '@tamagui/lucide-icons'
 import { useThemeStore } from '@/zustand'
+import { Monitor, Moon, Sun } from '@tamagui/lucide-icons'
+import { Button, H1, Paragraph, Separator, YStack } from 'tamagui'
 import { Translator } from './Translator'
 
-const icons = {
+const icons: any = {
   dark: <Moon />,
   light: <Sun />,
   system: <Monitor />,

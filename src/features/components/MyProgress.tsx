@@ -1,6 +1,6 @@
 import { Paragraph, Progress, YStack } from 'tamagui'
 
-export const MyProgress = ({ text, percentage }) => {
+export const MyProgress = ({ text, percentage }: { text: string; percentage: number }) => {
   percentage = percentage ?? 0
   return (
     <YStack h="60" ai="center" gap>
