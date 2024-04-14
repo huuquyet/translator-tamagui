@@ -1,6 +1,5 @@
 /** @type {import('next').NextConfig} */
 const { withTamagui } = require('@tamagui/next-plugin')
-const { join } = require('node:path')
 const withPWA = require('@ducanh2912/next-pwa').default({
   dest: 'public',
   disable: process.env.NODE_ENV === 'development',
@@ -20,7 +19,7 @@ const plugins = [
     appDir: true,
     components: ['tamagui'],
     importsWhitelist: ['constants.js', 'colors.js'],
-    outputCSS: process.env.NODE_ENV === 'production' ? './public/tamagui.css' : null,
+    outputCSS: process.env.NODE_ENV === 'production' ? './public/tamagui.css' : './tamagui.css',
     logTimings: true,
     disableExtraction,
     excludeReactNativeWebExports: ['Switch', 'ProgressBar', 'Picker', 'CheckBox', 'Touchable'],

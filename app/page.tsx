@@ -1,4 +1,6 @@
-import { HomeScreen } from '@/features/home/screen'
-import '../public/tamagui.css'
+import Home from '@/features/home/screen'
+import '../tamagui.css'
 
-export default HomeScreen
+export default function Page() {
+  return <Home />
+}
