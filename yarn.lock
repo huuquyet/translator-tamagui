@@ -9315,9 +9315,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"transformers-tamgui-translator@workspace:.":
+"translator-tamagui@workspace:.":
   version: 0.0.0-use.local
-  resolution: "transformers-tamgui-translator@workspace:."
+  resolution: "translator-tamagui@workspace:."
   dependencies:
     "@ducanh2912/next-pwa": "npm:^10.2.6"
     "@tamagui/config": "npm:latest"

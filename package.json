@@ -1,5 +1,5 @@
 {
-  "name": "transformers-tamgui-translator",
+  "name": "translator-tamagui",
   "description": "Translator demo app built with Transformers.js + Tamgui + Next.js",
   "version": "0.2.0",
   "private": true,
