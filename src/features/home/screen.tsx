@@ -1,6 +1,8 @@
-import { Button, H1, Paragraph, Separator, Text, XStack, YStack } from '@my/ui'
+'use client'
+
+import { Button, H1, Paragraph, Separator, YStack } from 'tamagui'
 import { Monitor, Moon, Sun } from '@tamagui/lucide-icons'
-import { useThemeStore } from 'app/zustand'
+import { useThemeStore } from '@/zustand'
 import { Translator } from './Translator'
 
 const icons = {
@@ -18,6 +20,7 @@ export function HomeScreen() {
         <H1 ta="center">Transformers.js + Tamagui</H1>
         <Paragraph ta="center">ML-powered multilingual translation in React!</Paragraph>
       </YStack>
+      <Separator />
 
       <Translator />
 

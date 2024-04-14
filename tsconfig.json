@@ -1,22 +1,43 @@
 {
   "compilerOptions": {
-    "module": "esnext",
+    "allowJs": true,
+    "baseUrl": ".",
+    "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "noUncheckedIndexedAccess": true,
+    "incremental": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ESNext"
+    ],
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "noEmit": true,
     "paths": {
-      "app/*": ["./packages/app/*"],
-      "@my/ui/*": ["./packages/ui/*"]
+      "@/*": [
+        "app/*",
+        "src/*"
+      ]
     },
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
     "strict": true,
-    "strictNullChecks": true
+    "target": "ESNext"
   },
-  "extends": "./tsconfig.base",
+  "include": [
+    "src",
+    "next-env.d.ts",
+    ".next/types/**/*.ts",
+    "./dist/types/**/*.ts"
+  ],
   "exclude": [
-    "**/node_modules",
-    "**/dist",
-    "**/types",
-    "apps/next/.next",
-    "apps/next/.tamagui",
-    "apps/next/out"
+    "node_modules"
   ]
 }

@@ -1,7 +1,7 @@
-import { Adapt, Paragraph, Select, Sheet, YStack } from '@my/ui'
+import { Adapt, Paragraph, Select, Sheet, YStack } from 'tamagui'
 import { LinearGradient } from '@tamagui/linear-gradient'
 import { Check, ChevronDown, ChevronUp } from '@tamagui/lucide-icons'
-import { LANGUAGES } from 'app/zustand'
+import { LANGUAGES } from '@/zustand'
 import { Platform } from 'react-native'
 
 export const LanguageSelector = ({ type, onChange, defaultLanguage }) => {

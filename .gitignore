@@ -9,20 +9,16 @@
 !.yarn/sdks
 !.yarn/versions
 
-# expo
-**/.expo/*
-**/android/
-**/ios/
-
 # next.js
-**/.next/*
-**/out/
+.next
+out/
+dist/
 
 # tamagui
-**/.tamagui/*
+.tamagui/*
 
 # production
-/build
+build
 
 # debug
 npm-debug.log*
@@ -37,7 +33,7 @@ yarn-error.log*
 .env.production.local
 
 # vercel
-**/.vercel/
+.vercel
 
 # typescript
 *.tsbuildinfo
@@ -48,7 +44,11 @@ THUMBS_DB
 thumbs.db
 
 # turbo build log
-**/.turbo/*
+.turbo
 
 # IDE
 .idea
+
+# pwa
+**/sw*
+**/workbox-*

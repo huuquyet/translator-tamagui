@@ -1,6 +1,5 @@
 /** @type {import('next').NextConfig} */
 const { withTamagui } = require('@tamagui/next-plugin')
-const { withExpo } = require('@expo/next-adapter')
 const { join } = require('node:path')
 const withPWA = require('@ducanh2912/next-pwa').default({
   dest: 'public',
@@ -17,25 +16,25 @@ const disableExtraction =
 
 const plugins = [
   withTamagui({
-    config: '../../packages/ui/src/tamagui.config.ts',
-    components: ['tamagui', '@my/ui'],
+    config: './tamagui.config.ts',
+    appDir: true,
+    components: ['tamagui'],
     importsWhitelist: ['constants.js', 'colors.js'],
     outputCSS: process.env.NODE_ENV === 'production' ? './public/tamagui.css' : null,
     logTimings: true,
     disableExtraction,
-    shouldExtract: (path) => {
-      if (path.includes(join('packages', 'app'))) {
-        return true
-      }
-    },
     excludeReactNativeWebExports: ['Switch', 'ProgressBar', 'Picker', 'CheckBox', 'Touchable'],
   }),
   withPWA,
-  withExpo,
 ]
 
 /** @type {import('next').NextConfig} */
 let nextConfig = {
+  // (Optional) Export as a static site
+  // See https://nextjs.org/docs/pages/building-your-application/deploying/static-exports#configuration
+  output: 'export', // Outputs a Single-Page Application (SPA).
+  distDir: './dist', // Changes the build output directory to `./dist/`.
+
   typescript: {
     ignoreBuildErrors: true,
   },
@@ -45,12 +44,22 @@ let nextConfig = {
       skipDefaultConversion: true,
     },
   },
-  transpilePackages: ['expo-constants', 'expo-modules-core', 'react-native-web', 'solito'],
+  transpilePackages: [],
   experimental: {
     // optimizeCss: true,
     scrollRestoration: true,
   },
-  reactStrictMode: true,
+  reactStrictMode: true, // Recommended for the `pages` directory, default in `app`.
+  // Override the default webpack configuration
+  webpack: (config) => {
+    // See https://webpack.js.org/configuration/resolve/#resolvealias
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      sharp$: false,
+      'onnxruntime-node$': false,
+    }
+    return config
+  },
 }
 
 for (const plugin of plugins) {

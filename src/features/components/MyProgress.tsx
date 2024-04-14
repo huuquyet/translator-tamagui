@@ -1,4 +1,4 @@
-import { Paragraph, Progress, YStack } from '@my/ui'
+import { Paragraph, Progress, YStack } from 'tamagui'
 
 export const MyProgress = ({ text, percentage }) => {
   percentage = percentage ?? 0
