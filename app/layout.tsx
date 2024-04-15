@@ -1,4 +1,3 @@
-import Provider from '@/provider'
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
@@ -56,7 +55,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="en">
       <head />
       <body>
-        <Provider>{children}</Provider>
+        {children}
         <Analytics />
       </body>
     </html>
