@@ -114,7 +114,7 @@ export const Translator = () => {
       </button>
 
       <div className="progress-bars-container">
-        {ready === false && <label>Loading models... (only run once)</label>}
+        {ready === false && <label>Loading models... (912MB total, only run once)</label>}
         {progressItems.map((data: any) => (
           <div key={data.file}>
             <MyProgress text={data.file} percentage={data.progress} />
