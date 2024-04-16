@@ -10,7 +10,7 @@ export const Translator = () => {
   const [disabled, setDisabled] = useState(true)
   const [loadProgress, setLoadProgress] = useState({})
   const [progress, setProgress] = useState(0)
-  const [statusText, setStatusText] = useState('Loading model (912MB)...')
+  const [statusText, setStatusText] = useState('Loading model (927MB)...')
 
   // Inputs and outputs
   const [input, setInput] = useState('Tôi yêu Việt Nam quê hương tôi.')
@@ -27,6 +27,7 @@ export const Translator = () => {
   // Load translator pipeline on first render
   useEffect(() => {
     pipelinePromise.current ??= pipeline(task, model, {
+      quantized: true,
       progress_callback: (data) => {
         if (data.status !== 'progress') return
         setLoadProgress((prev) => ({ ...prev, [data.file]: data }))
@@ -48,7 +49,7 @@ export const Translator = () => {
     const progress = loaded / total
     setProgress(progress)
     setStatusText(
-      progress === 1 ? 'Ready!' : `Loading model (${(progress * 100).toFixed()}% of 912MB)...`
+      progress === 1 ? 'Ready!' : `Loading model (${(progress * 100).toFixed()}% of 927MB)...`
     )
     setDisabled(false)
   }, [loadProgress])
@@ -56,7 +57,7 @@ export const Translator = () => {
   const translate = async () => {
     setDisabled(true)
     setStatusText('Translating...')
-    // setOutput('')
+    setOutput('')
 
     // Get translator pipeline
     const translator = await pipelinePromise.current
