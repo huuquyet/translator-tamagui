@@ -1,14 +1,13 @@
 'use client'
 
-import { M2M100ForConditionalGeneration, M2M100Tokenizer } from '@xenova/transformers'
+import { pipeline } from '@xenova/transformers'
 import { useEffect, useRef, useState } from 'react'
 import { LanguageSelector } from './LanguageSelector'
 import { MyProgress } from './MyProgress'
 
 export const Translator = () => {
   // Model loading
-  const [ready, setReady] = useState(null)
-  const [disabled, setDisabled] = useState(false)
+  const [disabled, setDisabled] = useState(true)
   const [loadProgress, setLoadProgress] = useState({})
   const [progress, setProgress] = useState(0)
   const [statusText, setStatusText] = useState('Loading model (912MB)...')
@@ -19,25 +18,19 @@ export const Translator = () => {
   const [targetLanguage, setTargetLanguage] = useState('eng_Latn')
   const [output, setOutput] = useState('')
 
-  const MODEL_ID = 'Xenova/nllb-200-distilled-600M'
+  const task = 'translation'
+  const model = 'Xenova/nllb-200-distilled-600M'
 
-  // Model and tokenizer references
-  const modelPromise = useRef(null)
-  const tokenizerPromise = useRef(null)
+  // Pipeline references
+  const pipelinePromise = useRef(null)
 
-  // Load model and tokenizer on first render
+  // Load translator pipeline on first render
   useEffect(() => {
-    modelPromise.current ??= M2M100ForConditionalGeneration.from_pretrained(MODEL_ID, {
+    pipelinePromise.current ??= pipeline(task, model, {
       progress_callback: (data) => {
         if (data.status !== 'progress') return
         setLoadProgress((prev) => ({ ...prev, [data.file]: data }))
       },
-      device: 'wasm',
-    })
-
-    tokenizerPromise.current ??= M2M100Tokenizer.from_pretrained(MODEL_ID, {
-      src_lang: sourceLanguage,
-      tgt_lang: targetLanguage,
     })
   }, [])
 
@@ -65,18 +58,23 @@ export const Translator = () => {
     setStatusText('Translating...')
     // setOutput('')
 
-    // Get model and tokenizer
-    const model = await modelPromise.current
-    const tokenizer = await tokenizerPromise.current
+    // Get translator pipeline
+    const translator = await pipelinePromise.current
 
-    // Tokenizer input text
-    tokenizer.src_lang = sourceLanguage
-    tokenizer.tgt_lang = targetLanguage
-    const {input_ids} = await tokenizer(input)
-    const outputs = await model.generate(input_ids)
+    // Translate input text
+    const outputs = await translator(input, {
+      src_lang: sourceLanguage,
+      tgt_lang: targetLanguage,
 
-    const decoded = tokenizer.decode(outputs[0], { skip_special_tokens: true })
-    setOutput(decoded)
+      // Allow for partial output
+      callback_function: (x: any) => {
+        const decoded = translator.tokenizer.decode(x[0].output_token_ids, {
+          skip_special_tokens: true,
+        })
+        setOutput(decoded)
+      },
+    })
+
     setStatusText('Done!')
     setDisabled(false)
   }
