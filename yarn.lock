@@ -1695,97 +1695,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@biomejs/biome@npm:^1.6.3":
-  version: 1.7.0
-  resolution: "@biomejs/biome@npm:1.7.0"
-  dependencies:
-    "@biomejs/cli-darwin-arm64": "npm:1.7.0"
-    "@biomejs/cli-darwin-x64": "npm:1.7.0"
-    "@biomejs/cli-linux-arm64": "npm:1.7.0"
-    "@biomejs/cli-linux-arm64-musl": "npm:1.7.0"
-    "@biomejs/cli-linux-x64": "npm:1.7.0"
-    "@biomejs/cli-linux-x64-musl": "npm:1.7.0"
-    "@biomejs/cli-win32-arm64": "npm:1.7.0"
-    "@biomejs/cli-win32-x64": "npm:1.7.0"
-  dependenciesMeta:
-    "@biomejs/cli-darwin-arm64":
-      optional: true
-    "@biomejs/cli-darwin-x64":
-      optional: true
-    "@biomejs/cli-linux-arm64":
-      optional: true
-    "@biomejs/cli-linux-arm64-musl":
-      optional: true
-    "@biomejs/cli-linux-x64":
-      optional: true
-    "@biomejs/cli-linux-x64-musl":
-      optional: true
-    "@biomejs/cli-win32-arm64":
-      optional: true
-    "@biomejs/cli-win32-x64":
-      optional: true
-  bin:
-    biome: bin/biome
-  checksum: 10/cf5b0bf2351686dce17ad07455a3b66af5371830e593968a58a89380f0893142a6337947239ee1b840babc753dc0542fa0a1685a5340a5512cc414f37a0e4a78
-  languageName: node
-  linkType: hard
-
-"@biomejs/cli-darwin-arm64@npm:1.7.0":
-  version: 1.7.0
-  resolution: "@biomejs/cli-darwin-arm64@npm:1.7.0"
-  conditions: os=darwin & cpu=arm64
-  languageName: node
-  linkType: hard
-
-"@biomejs/cli-darwin-x64@npm:1.7.0":
-  version: 1.7.0
-  resolution: "@biomejs/cli-darwin-x64@npm:1.7.0"
-  conditions: os=darwin & cpu=x64
-  languageName: node
-  linkType: hard
-
-"@biomejs/cli-linux-arm64-musl@npm:1.7.0":
-  version: 1.7.0
-  resolution: "@biomejs/cli-linux-arm64-musl@npm:1.7.0"
-  conditions: os=linux & cpu=arm64 & libc=musl
-  languageName: node
-  linkType: hard
-
-"@biomejs/cli-linux-arm64@npm:1.7.0":
-  version: 1.7.0
-  resolution: "@biomejs/cli-linux-arm64@npm:1.7.0"
-  conditions: os=linux & cpu=arm64 & libc=glibc
-  languageName: node
-  linkType: hard
-
-"@biomejs/cli-linux-x64-musl@npm:1.7.0":
-  version: 1.7.0
-  resolution: "@biomejs/cli-linux-x64-musl@npm:1.7.0"
-  conditions: os=linux & cpu=x64 & libc=musl
-  languageName: node
-  linkType: hard
-
-"@biomejs/cli-linux-x64@npm:1.7.0":
-  version: 1.7.0
-  resolution: "@biomejs/cli-linux-x64@npm:1.7.0"
-  conditions: os=linux & cpu=x64 & libc=glibc
-  languageName: node
-  linkType: hard
-
-"@biomejs/cli-win32-arm64@npm:1.7.0":
-  version: 1.7.0
-  resolution: "@biomejs/cli-win32-arm64@npm:1.7.0"
-  conditions: os=win32 & cpu=arm64
-  languageName: node
-  linkType: hard
-
-"@biomejs/cli-win32-x64@npm:1.7.0":
-  version: 1.7.0
-  resolution: "@biomejs/cli-win32-x64@npm:1.7.0"
-  conditions: os=win32 & cpu=x64
-  languageName: node
-  linkType: hard
-
 "@emotion/is-prop-valid@npm:^0.8.2":
   version: 0.8.8
   resolution: "@emotion/is-prop-valid@npm:0.8.8"
@@ -1960,6 +1869,13 @@ __metadata:
   version: 0.20.2
   resolution: "@esbuild/win32-x64@npm:0.20.2"
   conditions: os=win32 & cpu=x64
+  languageName: node
+  linkType: hard
+
+"@expo-google-fonts/inter@npm:^0.2.3":
+  version: 0.2.3
+  resolution: "@expo-google-fonts/inter@npm:0.2.3"
+  checksum: 10/434dd414e4d4dd9b61283cc09dfc499d5a4162bcaa39d0ac88cc3664bac0f21d8c54c0be9868b36bcf6d562be077eec6fbe8874274bd447d29d4ee1e988d8682
   languageName: node
   linkType: hard
 
@@ -3975,7 +3891,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tamagui/constants@npm:1.94.5, @tamagui/constants@npm:latest":
+"@tamagui/constants@npm:1.94.5":
   version: 1.94.5
   resolution: "@tamagui/constants@npm:1.94.5"
   peerDependencies:
@@ -4123,7 +4039,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tamagui/font-inter@npm:1.94.5, @tamagui/font-inter@npm:latest":
+"@tamagui/font-inter@npm:1.94.5":
   version: 1.94.5
   resolution: "@tamagui/font-inter@npm:1.94.5"
   dependencies:
@@ -7372,7 +7288,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"expo-asset@npm:^9.0.2, expo-asset@npm:~9.0.2":
+"expo-asset@npm:~9.0.2":
   version: 9.0.2
   resolution: "expo-asset@npm:9.0.2"
   dependencies:
@@ -7397,7 +7313,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"expo-file-system@npm:^16.0.8, expo-file-system@npm:~16.0.0, expo-file-system@npm:~16.0.9":
+"expo-file-system@npm:~16.0.0, expo-file-system@npm:~16.0.9":
   version: 16.0.9
   resolution: "expo-file-system@npm:16.0.9"
   peerDependencies:
@@ -7406,7 +7322,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"expo-font@npm:^11.10.3, expo-font@npm:~11.10.3":
+"expo-font@npm:~11.10.3":
   version: 11.10.3
   resolution: "expo-font@npm:11.10.3"
   dependencies:
@@ -8445,13 +8361,6 @@ __metadata:
   bin:
     image-size: bin/image-size.js
   checksum: 10/f28966dd3f6d4feccc4028400bb7e8047c28b073ab0aa90c7c53039288139dd416c6bc254a976d4bf61113d4bc84871786804113099701cbfe9ccf377effdb54
-  languageName: node
-  linkType: hard
-
-"immer@npm:^10.0.4":
-  version: 10.0.4
-  resolution: "immer@npm:10.0.4"
-  checksum: 10/c1196783cf18e836527f970e45dc88e5472756401831e94d494ca5fd00ab7b39de3156f50505908207e7efe59ac23244d2cde0bd0cff791de7e23709771757e6
   languageName: node
   linkType: hard
 
@@ -10575,13 +10484,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"onnxruntime-common@npm:1.17.0":
-  version: 1.17.0
-  resolution: "onnxruntime-common@npm:1.17.0"
-  checksum: 10/14d527daca2b1f4d533a5368e16195efddf949f2e11313b771091bb89c36714aacf777700b8a29e82c4aa92c9510b3de8faa56367d26b0124a1cb203c1246283
-  languageName: node
-  linkType: hard
-
 "onnxruntime-common@npm:~1.14.0":
   version: 1.14.0
   resolution: "onnxruntime-common@npm:1.14.0"
@@ -10594,16 +10496,6 @@ __metadata:
   resolution: "onnxruntime-node@npm:1.14.0"
   dependencies:
     onnxruntime-common: "npm:~1.14.0"
-  conditions: (os=win32 | os=darwin | os=linux)
-  languageName: node
-  linkType: hard
-
-"onnxruntime-node@npm:^1.17.0":
-  version: 1.17.0
-  resolution: "onnxruntime-node@npm:1.17.0"
-  dependencies:
-    onnxruntime-common: "npm:1.17.0"
-  checksum: 10/765f39a6a79487dff8c9cbd8d74b121592fbfbd000ae88dc9a0249add67c278d237b9fbab9dd625ace29a06caa8c1abe14bf9d53ba897239482c881d81a9055a
   conditions: (os=win32 | os=darwin | os=linux)
   languageName: node
   linkType: hard
@@ -11343,16 +11235,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-mmkv@npm:^2.12.2":
-  version: 2.12.2
-  resolution: "react-native-mmkv@npm:2.12.2"
-  peerDependencies:
-    react: "*"
-    react-native: ">=0.71.0"
-  checksum: 10/c1ebb8e81905ee8ce17858ff6096525cbdd0e51892dca80a3cd6e26feb5e979a9c7d609c5a55886150efb0136c5899de174c71115f81607019ed7af68678797b
-  languageName: node
-  linkType: hard
-
 "react-native-safe-area-context@npm:4.8.2":
   version: 4.8.2
   resolution: "react-native-safe-area-context@npm:4.8.2"
@@ -11373,15 +11255,6 @@ __metadata:
     react: "*"
     react-native: "*"
   checksum: 10/2322cba59542ae552c25d222b6311024ea17daf2431c5ed9029d3682e61d2f8bc5428f496b237e81a6d1c6bdf29abeab0ed005cfbb48420f34e1cdffdc40823b
-  languageName: node
-  linkType: hard
-
-"react-native-threads@npm:^0.0.19":
-  version: 0.0.19
-  resolution: "react-native-threads@npm:0.0.19"
-  peerDependencies:
-    react-native: ">=0.50.0"
-  checksum: 10/baae72b558588996f59579ec722b0af5f0f36fe814652b68b2ae1ab9d05d938e2198f97bb7ec3aed5011a548647b4f8146181da19ee2846d3dee130fef19acf7
   languageName: node
   linkType: hard
 
@@ -13075,12 +12948,10 @@ __metadata:
   resolution: "translator-tamagui@workspace:."
   dependencies:
     "@babel/core": "npm:^7.24.3"
-    "@biomejs/biome": "npm:^1.6.3"
+    "@expo-google-fonts/inter": "npm:^0.2.3"
     "@expo/metro-runtime": "npm:^3.1.3"
     "@react-navigation/native": "npm:^6.1.17"
     "@tamagui/config": "npm:latest"
-    "@tamagui/constants": "npm:latest"
-    "@tamagui/font-inter": "npm:latest"
     "@tamagui/linear-gradient": "npm:latest"
     "@tamagui/lucide-icons": "npm:latest"
     "@tamagui/metro-plugin": "npm:latest"
@@ -13090,24 +12961,17 @@ __metadata:
     "@xenova/transformers": "npm:^2.16.1"
     babel-preset-expo: "npm:^10.0.1"
     expo: "npm:^50.0.14"
-    expo-asset: "npm:^9.0.2"
-    expo-file-system: "npm:^16.0.8"
-    expo-font: "npm:^11.10.3"
     expo-linear-gradient: "npm:^12.7.2"
     expo-linking: "npm:^6.2.2"
     expo-router: "npm:^3.4.8"
     expo-status-bar: "npm:^1.11.1"
-    immer: "npm:^10.0.4"
     jotai: "npm:^2.7.1"
     metro: "npm:^0.80.8"
-    onnxruntime-node: "npm:^1.17.0"
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
     react-native: "npm:0.73.6"
-    react-native-mmkv: "npm:^2.12.2"
     react-native-safe-area-context: "npm:4.8.2"
     react-native-svg: "npm:14.1.0"
-    react-native-threads: "npm:^0.0.19"
     react-native-web: "npm:^0.19.10"
     tamagui: "npm:latest"
     typescript: "npm:^5.4.5"

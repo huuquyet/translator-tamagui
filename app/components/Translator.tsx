@@ -29,7 +29,7 @@ export const Translator = () => {
   useEffect(() => {
     pipelinePromise.current ??= pipeline(task, model, {
       quantized: true,
-      progress_callback: (data) => {
+      progress_callback: (data: any) => {
         if (data.status !== 'progress') return
         setLoadProgress((prev) => ({ ...prev, [data.file]: data }))
       },
@@ -61,7 +61,7 @@ export const Translator = () => {
     setOutput('')
 
     // Get translator pipeline
-    const translator = await pipelinePromise.current
+    const translator = pipelinePromise.current
 
     // Translate input text
     const outputs = await translator(input, {
