@@ -1,0 +1,146 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+line-height: 1.5;
+font-weight: 400;
+color: #213547;
+background-color: #ffffff;
+
+font-synthesis: none;
+text-rendering: optimizeLegibility;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+-webkit-text-size-adjust: 100%;
+}
+
+body {
+margin: 0;
+display: flex;
+place-items: center;
+min-width: 320px;
+min-height: 100vh;
+flex-direction: column;
+justify-content: center;
+}
+
+h1 {
+font-size: 3.2em;
+line-height: 1;
+}
+
+h1,
+h2 {
+margin: 8px;
+}
+
+.container {
+margin: 25px;
+display: flex;
+flex-direction: column;
+gap: 10px;
+}
+
+.language-container {
+display: flex;
+gap: 20px;
+}
+
+.language-selector>select {
+width: 150px;
+}
+
+.textbox-container {
+display: flex;
+justify-content: center;
+gap: 20px;
+width: 800px;
+}
+
+.textbox-container>textarea, .language-selector {
+width: 50%;
+}
+
+.selector-container {
+display: flex;
+gap: 20px;
+}
+
+select {
+padding: 0.3em;
+cursor: pointer;
+}
+
+textarea {
+padding: 0.6em;
+}
+
+.progress-bars-container {
+padding: 8px;
+height: 140px;
+text-align: center;
+min-width: 340px;
+}
+
+.progress-container {
+position: relative;
+font-size: 14px;
+color: white;
+background-color: #e9ecef;
+border: solid 1px;
+border-radius: 8px;
+overflow: hidden;
+}
+
+.progress-bar {
+padding: 0 4px;
+z-index: 0;
+top: 0;
+width: 1%;
+height: 100%;
+overflow: hidden;
+background-color: #007bff;
+white-space: nowrap;
+}
+
+.progress-text {
+z-index: 2;
+}
+
+button {
+padding: 0.6em 1.2em;
+cursor: pointer;
+font-weight: 500;
+}
+
+button[disabled] {
+cursor: not-allowed;
+}
+
+select,
+textarea,
+button {
+border-radius: 8px;
+border: 1px solid transparent;
+font-size: 1em;
+font-family: inherit;
+background-color: #f9f9f9;
+transition: border-color 0.25s;
+}
+
+select:hover,
+textarea:hover,
+button:not([disabled]):hover {
+border-color: #646cff;
+}
+
+select:focus,
+select:focus-visible,
+textarea:focus,
+textarea:focus-visible,
+button:focus,
+button:focus-visible {
+outline: 4px auto -webkit-focus-ring-color;
+}

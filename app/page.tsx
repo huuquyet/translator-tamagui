@@ -1,6 +1,8 @@
-import Home from '@/features/home/screen'
-import '../tamagui.css'
+import dynamic from 'next/dynamic'
+import './globals.css'
 
 export default function Page() {
-  return <Home />
+  const App = dynamic(() => import('@/App'), { ssr: false })
+
+  return <App />
 }

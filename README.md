@@ -1,17 +1,14 @@
-# Translator App built with Transformers.js + Tamagui + Next.js
-
-```sh
-npm create tamagui
-```
+# Translator App built with Transformers.js + Next.js
 
 ## 🔦 About
 
-This Translator app is a starter for a Transformers.js + Next.js + Tamagui + Solito app.
+This Translator app is a starter for a Transformers.js + Next.js
+
+Please check out the demo site [![Open in Spaces](https://huggingface.co/datasets/huggingface/badges/resolve/main/open-in-hf-spaces-sm-dark.svg)](https://huggingface.co/spaces/huuquyet/translator-next) or [Vercel app](https://nextjs-translator.vercel.app/).
 
 ## 📦 Included packages
 
-- [Tamagui](https://tamagui.dev) 🪄
-- Transformers.js
+- Transformers.js 🪄
 - Next.js
 
 ## 🗂 Folder layout
@@ -19,21 +16,27 @@ This Translator app is a starter for a Transformers.js + Next.js + Tamagui + Sol
 The main apps are:
 
 - `app` folder of Next.js
-- `src`
-    - `features` (don't use a `screens` folder. organize by feature.)
-    - `provider` (all the providers that wrap the app, and some no-ops for Web.)
+- `src` all the components and screens
 
 ## 🏁 Start the app
 
-- Install dependencies: `yarn`
+1. Clone the repo and install dependencies:
 
-- Next.js local dev: `yarn dev`
+    ```bash
+    git clone https://github.com/huuquyet/translator-next.git
+    cd translator-next
+    yarn install
+    ```
 
-To see debug output to verify the compiler, add `// debug` as a comment to the top of any file.
+2. Run the development server:
 
-## UI Kit
+    ```bash
+    yarn dev
+    ```
+    > Firefox users need to change the `dom.workers.modules.enabled` setting in `about:config` to `true` to enable Web Workers.
+    > Check out [this issue](https://github.com/xenova/whisper-web/issues/8) for more details.
 
-Note we're following the [design systems guide](https://tamagui.dev/docs/guides/design-systems) and creating our own package for components.
+3. Open the link (e.g., [http://localhost:3000/](http://localhost:3000/)) in your browser.
 
 ## 🆕 Add new dependencies
 
@@ -58,20 +61,8 @@ You may potentially want to have the native module transpiled for the next app. 
 ## Deploying to Vercel
 
 - Install vercel cli (if not): `npm i -g vercel`
+- Login to vercel: `vercel login`
 - Build command to be `vercel build` (add `--prod` if wanna build production version)
 - Build command: leave default setting
 - Output dir: leave default setting
 - Deploy to vercel: `vercel --prebuilt` (add `--prod` if wanna deploy to production)
-
-### Troubleshooting Vercel Deployment
-
-If after pushing to GitHub you're seeing that your automatic vercel deployment failed because of an error that looks like this:
-
-```
-➤ YN0028: │ The lockfile would have been modified by this install, which is explicitly forbidden.
-➤ YN0000: └ Completed
-➤ YN0000: Failed with errors in 0s 700ms
-Error: Command "yarn set version berry && yarn install" exited with 1
-```
-
-Run `yarn install` locally and then commit and push the changes to GitHub.

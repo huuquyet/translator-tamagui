@@ -1,11 +1,6 @@
-import { create } from 'zustand'
-import { createJSONStorage, devtools, persist } from 'zustand/middleware'
-import { immer } from 'zustand/middleware/immer'
-import { mmkvStorage } from './mmkvStorage'
-
 // The full list of languages in FLORES-200 is available here:
 // https://github.com/facebookresearch/flores/blob/main/flores200/README.md#languages-in-flores-200
-export const LANGUAGES = {
+const LANGUAGES = {
   'Acehnese (Arabic script)': 'ace_Arab',
   'Acehnese (Latin script)': 'ace_Latn',
   Afrikaans: 'afr_Latn',
@@ -212,119 +207,23 @@ export const LANGUAGES = {
   Zulu: 'zul_Latn',
 }
 
-interface ProgressInterface {
-  file: string
-  progress: number
-}
-
-interface TranslatorInterface {
-  ready: boolean
-  disabled: boolean
-  progressItems: ProgressInterface[]
-  input: string
-  output: string
-  sourceLanguage: string
-  targetLanguage: string
-  setDisabled: (disabled: boolean) => void
-  setInput: (input: string) => void
-  setSourceLanguage: (sourceLanguage: string) => void
-  setTargetLanguage: (targetLanguage: string) => void
-  onMessageReceived: (event: any) => void
-}
-
-const getDefaultState = {
-  ready: true,
-  disabled: false,
-  progressItems: [],
-  input: 'I love walking with my dog.',
-  sourceLanguage: 'eng_Latn',
-  targetLanguage: 'fra_Latn',
-  output: '',
-}
-
-const createTranslatorStore = create<TranslatorInterface>()(
-  devtools(
-    persist(
-      immer((set) => ({
-        ...getDefaultState,
-        setDisabled: (disabled) => {
-          set({ disabled })
-        },
-        setInput: (input) => {
-          set({ input })
-        },
-        setSourceLanguage: (sourceLanguage) => {
-          set({ sourceLanguage })
-        },
-        setTargetLanguage: (targetLanguage) => {
-          set({ targetLanguage })
-        },
-
-        // Create a callback function for messages from the worker thread.
-        onMessageReceived: (event) => {
-          switch (event.data.status) {
-            case 'initiate':
-              set((state) => {
-                state.ready = false
-                state.progressItems.push(event.data)
-              })
-              break
-
-            case 'progress':
-              // Model file progress: update one of the progress items.
-              set((state) => {
-                const progressItem = state.progressItems.find(
-                  (item) => item.file === event.data.file
-                )!
-                progressItem.progress = event.data.progress
-              })
-              break
-
-            case 'done':
-              // Model file loaded: remove the progress item from the list.
-              set((state) => {
-                state.progressItems.filter((item) => item.file !== event.data.file)
-              })
-              break
-
-            case 'ready':
-              // Pipeline ready: the worker is ready to accept messages.
-              set({ ready: true })
-              break
-
-            case 'update':
-              // Generation update: update the output text.
-              set({ output: event.data.output })
-              break
-
-            case 'complete':
-              // Generation complete: re-enable the "Translate" button
-              set({ disabled: false })
-              break
-          }
-        },
-      })),
-      {
-        name: 'translator',
-      }
-    ),
-    { enabled: false }
+export const LanguageSelector = ({
+  type,
+  onChange,
+  defaultLanguage,
+}: { type: string; onChange: any; defaultLanguage: string }) => {
+  return (
+    <div className="language-selector">
+      <label>{type}: </label>
+      <select onChange={onChange} defaultValue={defaultLanguage}>
+        {Object.entries(LANGUAGES).map(([key, value]) => {
+          return (
+            <option key={key} value={value}>
+              {key}
+            </option>
+          )
+        })}
+      </select>
+    </div>
   )
-)
-
-export const useTranslatorStore = () => {
-  return createTranslatorStore((store) => ({
-    ready: store.ready,
-    disabled: store.disabled,
-    progressItems: store.progressItems,
-    input: store.input,
-    sourceLanguage: store.sourceLanguage,
-    targetLanguage: store.targetLanguage,
-    output: store.output,
-    setDisabled: store.setDisabled,
-    setInput: store.setInput,
-    setSourceLanguage: store.setSourceLanguage,
-    setTargetLanguage: store.setTargetLanguage,
-    onMessageReceived: store.onMessageReceived,
-  }))
 }
