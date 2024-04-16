@@ -2,6 +2,7 @@
 
 import { pipeline } from '@xenova/transformers'
 import { useEffect, useRef, useState } from 'react'
+import { Button, TextArea, XStack, YStack } from 'tamagui'
 import { LanguageSelector } from './LanguageSelector'
 import { MyProgress } from './MyProgress'
 
@@ -82,33 +83,33 @@ export const Translator = () => {
 
   return (
     <>
-      <div className="container">
-        <div className="language-container">
+      <XStack gap="$4">
+        <YStack gap>
           <LanguageSelector
             type={'Source'}
-            defaultLanguage={'vie_Latn'}
-            onChange={(x: any) => setSourceLanguage(x.target.value)}
+            defaultLanguage={'eng_Latn'}
+            onChange={setSourceLanguage}
           />
+          <TextArea value={input} size="$4" onChange={setInput} />
+        </YStack>
+
+        <YStack gap>
           <LanguageSelector
             type={'Target'}
-            defaultLanguage={'eng_Latn'}
-            onChange={(x: any) => setTargetLanguage(x.target.value)}
+            defaultLanguage={'fra_Latn'}
+            onChange={setTargetLanguage}
           />
-        </div>
+          <TextArea value={output} size="$4" readOnly />
+        </YStack>
+      </XStack>
 
-        <div className="textbox-container">
-          <textarea value={input} rows={3} onChange={(e) => setInput(e.target.value)} />
-          <textarea value={output} rows={3} readOnly />
-        </div>
-      </div>
-
-      <button type="button" disabled={disabled} onClick={translate}>
+      <Button disabled={disabled} onPress={translate}>
         Translate
-      </button>
+      </Button>
 
-      <div className="progress-bars-container">
+      <YStack gap>
         <MyProgress text={statusText} percentage={progress} />
-      </div>
+      </YStack>
     </>
   )
 }

@@ -1,4 +1,5 @@
 {
+  "extends": "expo/tsconfig.base",
   "compilerOptions": {
     "allowJs": true,
     "baseUrl": ".",
@@ -12,7 +13,7 @@
     "moduleResolution": "Node",
     "noEmit": true,
     "paths": {
-      "@/*": ["./app/*", "./src/*"]
+      "@/*": ["./app/*"]
     },
     "plugins": [
       {
@@ -24,6 +25,12 @@
     "strict": true,
     "target": "ESNext"
   },
-  "include": ["src", "next-env.d.ts", ".next/types/**/*.ts", "./dist/types/**/*.ts"],
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    ".expo/types/**/*.ts",
+    "expo-env.d.ts",
+    "app/components/worker.js"
+  ],
   "exclude": ["node_modules"]
 }
