@@ -3,7 +3,6 @@
   "description": "Translator demo app built with Transformers.js + Next.js",
   "version": "0.2.0",
   "private": true,
-  "type": "module",
   "scripts": {
     "build": "next build",
     "clean": "yarn cache clean --all && git clean -xdf",

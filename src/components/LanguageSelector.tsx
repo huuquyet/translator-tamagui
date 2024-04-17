@@ -1,3 +1,28 @@
+export const LanguageSelector = ({
+  type,
+  onChange,
+  defaultLanguage,
+}: { type: string; onChange: any; defaultLanguage: string }) => {
+  return (
+    <div className="w-1/2 gap-5">
+      <label>{type}: </label>
+      <select aria-label="Select language"
+        className="w-40 p-1 cursor-pointer"
+        onChange={onChange}
+        defaultValue={defaultLanguage}
+      >
+        {Object.entries(LANGUAGES).map(([key, value]) => {
+          return (
+            <option key={key} value={value}>
+              {key}
+            </option>
+          )
+        })}
+      </select>
+    </div>
+  )
+}
+
 // The full list of languages in FLORES-200 is available here:
 // https://github.com/facebookresearch/flores/blob/main/flores200/README.md#languages-in-flores-200
 const LANGUAGES = {
@@ -205,25 +230,4 @@ const LANGUAGES = {
   Yoruba: 'yor_Latn',
   'Yue Chinese': 'yue_Hant',
   Zulu: 'zul_Latn',
-}
-
-export const LanguageSelector = ({
-  type,
-  onChange,
-  defaultLanguage,
-}: { type: string; onChange: any; defaultLanguage: string }) => {
-  return (
-    <div className="language-selector">
-      <label>{type}: </label>
-      <select onChange={onChange} defaultValue={defaultLanguage}>
-        {Object.entries(LANGUAGES).map(([key, value]) => {
-          return (
-            <option key={key} value={value}>
-              {key}
-            </option>
-          )
-        })}
-      </select>
-    </div>
-  )
 }
