@@ -1,8 +1,7 @@
 {
   "name": "translator-tamagui",
-  "description": "Translator demo app built with Transformers.js + Tamagui + Expo",
+  "description": "Translator demo app built with Transformers.js + Tamagui + Next.js",
   "version": "0.3.0",
-  "main": "expo-router/entry",
   "private": true,
   "type": "module",
   "scripts": {

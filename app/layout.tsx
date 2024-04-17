@@ -2,13 +2,12 @@ import Provider from '@/provider'
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
-import React from 'react'
 
 const APP_NAME = 'Translator Demo'
 const APP_DEFAULT_TITLE = 'Translator demo app built with Transformers.js + Tamagui + Next.js'
 const APP_TITLE_TEMPLATE = '%s - Translator'
 const APP_DESCRIPTION = 'Translator demo app built with Transformer.js + Tamagui + Next.js'
-const APP_URL = 'https://hf.co/spaces/huuquyet/translator-tamagui/'
+const APP_URL = 'https://hf.co/spaces/huuquyet/translator-next/'
 const TWITTER = '@HuuQuyetNg'
 
 export const metadata: Metadata = {
