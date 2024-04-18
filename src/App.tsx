@@ -25,7 +25,7 @@ export default function HomeScreen() {
 
       <Translator />
 
-      <Button pos="absolute" b={30} l={20} icon={icons[theme]} onPress={toggle} circular />
+      <Button pos="absolute" b={30} l={20} icon={icons[theme]} onPress={toggle as any} circular />
     </YStack>
   )
 }

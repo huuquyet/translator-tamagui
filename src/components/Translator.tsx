@@ -61,7 +61,7 @@ export const Translator = () => {
     setOutput('')
 
     // Get translator pipeline
-    const translator = await pipelinePromise.current
+    const translator = pipelinePromise.current
 
     // Translate input text
     const outputs = await translator(input, {
@@ -84,22 +84,22 @@ export const Translator = () => {
   return (
     <>
       <XStack gap="$4">
-        <YStack gap>
+        <YStack gap="$4">
           <LanguageSelector
             type={'Source'}
-            defaultLanguage={'eng_Latn'}
+            defaultLanguage={'vie_Latn'}
             onChange={setSourceLanguage}
           />
-          <TextArea value={input} size="$4" onChange={setInput} />
+          <TextArea value={input} size="$8" onChange={setInput as any} />
         </YStack>
 
-        <YStack gap>
+        <YStack gap="$4">
           <LanguageSelector
             type={'Target'}
-            defaultLanguage={'fra_Latn'}
+            defaultLanguage={'eng_Latn'}
             onChange={setTargetLanguage}
           />
-          <TextArea value={output} size="$4" readOnly />
+          <TextArea value={output} size="$8" readOnly />
         </YStack>
       </XStack>
 
@@ -107,9 +107,7 @@ export const Translator = () => {
         Translate
       </Button>
 
-      <YStack gap>
-        <MyProgress text={statusText} percentage={progress} />
-      </YStack>
+      <MyProgress text={statusText} percentage={progress} />
     </>
   )
 }

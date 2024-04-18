@@ -2,6 +2,7 @@ import Provider from '@/provider'
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
+import '../../tamagui.css'
 
 const APP_NAME = 'Translator Demo'
 const APP_DEFAULT_TITLE = 'Translator demo app built with Transformers.js + Tamagui + Next.js'
