@@ -1,3 +1,4 @@
+
 const { withTamagui } = require('@tamagui/next-plugin')
 const withPWA = require('@ducanh2912/next-pwa').default({
   dest: 'public',

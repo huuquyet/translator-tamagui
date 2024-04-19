@@ -8,7 +8,7 @@ const APP_NAME = 'Translator Demo'
 const APP_DEFAULT_TITLE = 'Translator demo app built with Transformers.js + Tamagui + Next.js'
 const APP_TITLE_TEMPLATE = '%s - Translator'
 const APP_DESCRIPTION = 'Translator demo app built with Transformer.js + Tamagui + Next.js'
-const APP_URL = 'https://hf.co/spaces/huuquyet/translator-next/'
+const APP_URL = 'https://hf.co/spaces/huuquyet/translator-tamagui/'
 const TWITTER = '@HuuQuyetNg'
 
 export const metadata: Metadata = {
