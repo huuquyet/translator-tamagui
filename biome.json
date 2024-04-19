@@ -12,6 +12,7 @@
       "./.pnp*",
       "./.tamagui",
       "./.next",
+      "./.vercel",
       "./dist",
       "./types",
       "./public",

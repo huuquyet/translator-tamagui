@@ -1,7 +1,8 @@
+import Provider from '@/provider'
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
-import './globals.css'
+import '../../tamagui.css'
 
 const APP_NAME = 'Translator Demo'
 const APP_DEFAULT_TITLE = 'Translator demo app built with Transformers.js + Tamagui + Next.js'
@@ -56,7 +57,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="en">
       <head />
       <body>
-        {children}
+        <Provider>{children}</Provider>
         <Analytics />
       </body>
     </html>

@@ -1,21 +1,21 @@
-# Translator App built with Transformers.js + Next.js
+# Translator App built with Transformers.js + Tamagui + Next.js
 
 ## 🔦 About
 
-This Translator app is a starter for a Transformers.js + Next.js
+This Translator app is a starter for a Transformers.js + Tamagui + Next.js
 
-Please check out the demo site [![Open in Spaces](https://huggingface.co/datasets/huggingface/badges/resolve/main/open-in-hf-spaces-sm-dark.svg)](https://huggingface.co/spaces/huuquyet/translator-next) or [Vercel app](https://nextjs-translator.vercel.app/).
+Please check out the demo site [![Open in Spaces](https://huggingface.co/datasets/huggingface/badges/resolve/main/open-in-hf-spaces-sm-dark.svg)](https://huggingface.co/spaces/huuquyet/translator-tamagui) or [Vercel app](https://translator-tamagui.vercel.app/).
 
 ## 📦 Included packages
 
-- Transformers.js 🪄
+- Transformers.js
+- Tamagui 🪄
 - Next.js
 
 ## 🗂 Folder layout
 
 The main apps are:
 
-- `app` folder of Next.js
 - `src` all the components and screens
 
 ## 🏁 Start the app
@@ -23,8 +23,8 @@ The main apps are:
 1. Clone the repo and install dependencies:
 
     ```bash
-    git clone https://github.com/huuquyet/translator-next.git
-    cd translator-next
+    git clone https://github.com/huuquyet/translator-tamagui.git
+    cd translator-tamagui
     yarn install
     ```
 

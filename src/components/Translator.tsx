@@ -2,6 +2,7 @@
 
 import { pipeline } from '@xenova/transformers'
 import { useEffect, useRef, useState } from 'react'
+import { Button, TextArea, XStack, YStack } from 'tamagui'
 import { LanguageSelector } from './LanguageSelector'
 import { MyProgress } from './MyProgress'
 
@@ -28,7 +29,7 @@ export const Translator = () => {
   useEffect(() => {
     pipelinePromise.current ??= pipeline(task, model, {
       quantized: true,
-      progress_callback: (data) => {
+      progress_callback: (data: any) => {
         if (data.status !== 'progress') return
         setLoadProgress((prev) => ({ ...prev, [data.file]: data }))
       },
@@ -46,10 +47,10 @@ export const Translator = () => {
       loaded += data.loaded
       total += data.total
     }
-    const progress = loaded / total
+    const progress = (loaded / total) * 100
     setProgress(progress)
     setStatusText(
-      progress === 1 ? 'Ready!' : `Loading model (${(progress * 100).toFixed()}% of 927MB)...`
+      progress === 100 ? 'Ready!' : `Loading model (${progress.toFixed()}% of 927MB)...`
     )
     setDisabled(false)
   }, [loadProgress])
@@ -82,43 +83,31 @@ export const Translator = () => {
 
   return (
     <>
-      <div className="flex flex-col m-6 gap-2">
-        <div className="flex gap-5">
+      <XStack gap="$4">
+        <YStack gap="$4">
           <LanguageSelector
             type={'Source'}
             defaultLanguage={'vie_Latn'}
-            onChange={(x: any) => setSourceLanguage(x.target.value)}
+            onChange={setSourceLanguage}
           />
+          <TextArea value={input} size="$6" onChange={setInput as any} />
+        </YStack>
+
+        <YStack gap="$4">
           <LanguageSelector
             type={'Target'}
             defaultLanguage={'eng_Latn'}
-            onChange={(x: any) => setTargetLanguage(x.target.value)}
+            onChange={setTargetLanguage}
           />
-        </div>
+          <TextArea value={output} size="$6" readOnly />
+        </YStack>
+      </XStack>
 
-        <div className="flex justify-center gap-5 w-full">
-          <textarea
-            className="w-1/2 p-2"
-            value={input}
-            rows={3}
-            onChange={(e) => setInput(e.target.value)}
-          />
-          <textarea className="w-1/2 p-2" value={output} rows={3} readOnly />
-        </div>
-      </div>
-
-      <button
-        className="mb-4 bg-green-500 hover:bg-green-400 transition-colors duration-100 text-white px-4 py-3 rounded-lg font-semibold"
-        type="button"
-        disabled={disabled}
-        onClick={translate}
-      >
+      <Button disabled={disabled} onPress={translate}>
         Translate
-      </button>
+      </Button>
 
-      <div className="w-1/2 mx-auto p-1 h-36 text-center">
-        <MyProgress text={statusText} percentage={progress} />
-      </div>
+      <MyProgress text={statusText} percentage={progress} />
     </>
   )
 }
