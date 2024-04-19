@@ -1,10 +1,34 @@
+
+const { withTamagui } = require('@tamagui/next-plugin')
 const withPWA = require('@ducanh2912/next-pwa').default({
   dest: 'public',
   disable: process.env.NODE_ENV === 'development',
 })
 
+const boolVals = {
+  true: true,
+  false: false,
+}
+
+const disableExtraction =
+  boolVals[process.env.DISABLE_EXTRACTION] ?? process.env.NODE_ENV === 'development'
+
+const plugins = [
+  withTamagui({
+    config: './tamagui.config.ts',
+    appDir: true,
+    components: ['tamagui'],
+    importsWhitelist: ['constants.js', 'colors.js'],
+    outputCSS: process.env.NODE_ENV === 'production' ? './public/tamagui.css' : './tamagui.css',
+    logTimings: true,
+    disableExtraction,
+    excludeReactNativeWebExports: ['Switch', 'ProgressBar', 'Picker', 'CheckBox', 'Touchable'],
+  }),
+  withPWA,
+]
+
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+let nextConfig = {
   // (Optional) Export as a static site
   // See https://nextjs.org/docs/pages/building-your-application/deploying/static-exports#configuration
   output: 'export', // Outputs a Single-Page Application (SPA).
@@ -12,6 +36,12 @@ const nextConfig = {
 
   typescript: {
     ignoreBuildErrors: true,
+  },
+  modularizeImports: {
+    '@tamagui/lucide-icons': {
+      transform: '@tamagui/lucide-icons/dist/esm/icons/{{kebabCase member}}',
+      skipDefaultConversion: true,
+    },
   },
   transpilePackages: [],
   experimental: {
@@ -31,4 +61,11 @@ const nextConfig = {
   },
 }
 
-module.exports = withPWA(nextConfig)
+for (const plugin of plugins) {
+  nextConfig = {
+    ...nextConfig,
+    ...plugin(nextConfig),
+  }
+}
+
+module.exports = nextConfig

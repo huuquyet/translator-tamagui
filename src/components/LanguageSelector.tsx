@@ -1,25 +1,76 @@
+import { LinearGradient } from '@tamagui/linear-gradient'
+import { Check, ChevronDown, ChevronUp } from '@tamagui/lucide-icons'
+import { Adapt, Paragraph, Select, Sheet, XStack, YStack } from 'tamagui'
+
 export const LanguageSelector = ({
   type,
   onChange,
   defaultLanguage,
 }: { type: string; onChange: any; defaultLanguage: string }) => {
   return (
-    <div className="w-1/2 gap-5">
-      <label>{type}: </label>
-      <select aria-label="Select language"
-        className="w-40 p-1 cursor-pointer"
-        onChange={onChange}
-        defaultValue={defaultLanguage}
-      >
-        {Object.entries(LANGUAGES).map(([key, value]) => {
-          return (
-            <option key={key} value={value}>
-              {key}
-            </option>
-          )
-        })}
-      </select>
-    </div>
+    <XStack f={1} ai='center'>
+      <Paragraph>{type}: </Paragraph>
+      <Select size="$4" onValueChange={onChange} defaultValue={defaultLanguage}>
+        <Select.Trigger iconAfter={ChevronDown}>
+          <Select.Value placeholder="Languages" />
+        </Select.Trigger>
+
+        <Adapt when="sm" platform="touch">
+          <Sheet native={false} modal dismissOnSnapToBottom animation="quick">
+            <Sheet.Frame>
+              <Sheet.ScrollView>
+                <Adapt.Contents />
+              </Sheet.ScrollView>
+            </Sheet.Frame>
+            <Sheet.Overlay
+              animation="lazy"
+              enterStyle={{ opacity: 0 }}
+              exitStyle={{ opacity: 0 }}
+            />
+          </Sheet>
+        </Adapt>
+
+        <Select.Content zIndex={200000}>
+          <Select.ScrollUpButton ai="center" jc="center" pos="relative" w="100%" h="$3">
+            <YStack zi={10}>
+              <ChevronUp size={20} />
+            </YStack>
+            <LinearGradient
+              start={[0, 0]}
+              end={[0, 1]}
+              fullscreen
+              colors={['$background', '$backgroundTransparent']}
+              br="$4"
+            />
+          </Select.ScrollUpButton>
+          <Select.Viewport>
+            <Select.Group>
+              <Select.Label>Languages</Select.Label>
+              {Object.entries(LANGUAGES).map(([key, value], index) => (
+                <Select.Item index={index} key={key} value={value}>
+                  <Select.ItemText>{key}</Select.ItemText>
+                  <Select.ItemIndicator ml="auto">
+                    <Check size={16} />
+                  </Select.ItemIndicator>
+                </Select.Item>
+              ))}
+            </Select.Group>
+          </Select.Viewport>
+          <Select.ScrollDownButton ai="center" jc="center" pos="relative" w="100%" h="$3">
+            <YStack zi={10}>
+              <ChevronDown size={20} />
+            </YStack>
+            <LinearGradient
+              start={[0, 0]}
+              end={[0, 1]}
+              fullscreen
+              colors={['$backgroundTransparent', '$background']}
+              br="$4"
+            />
+          </Select.ScrollDownButton>
+        </Select.Content>
+      </Select>
+    </XStack>
   )
 }
 

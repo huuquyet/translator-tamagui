@@ -1,19 +1,31 @@
 'use client'
 
 import { Translator } from '@/components/Translator'
+import { themeAtom } from '@/provider'
+import { Monitor, Moon, Sun } from '@tamagui/lucide-icons'
+import { useAtom } from 'jotai'
+import { Button, H1, Paragraph, Separator, YStack } from 'tamagui'
 
-export default function App() {
+const icons: any = {
+  dark: <Moon />,
+  light: <Sun />,
+  system: <Monitor />,
+}
+
+export default function HomeScreen() {
+  const [theme, toggle] = useAtom(themeAtom)
+
   return (
-    <div className="container mx-auto p-2">
-      <h1 className="text-5xl font-bold mb-2">Transformers.js + Next.js</h1>
-      <h3 className="text-2xl font-semibold mb-4">
-        ML-powered multilingual translation w/{' '}
-        <a className="underline" href="http://github.com/xenova/transformers.js">
-          🤗 Transformers.js!
-        </a>
-      </h3>
+    <YStack f={1} h="100vh" jc="center" ai="center" p="$4" gap="$4">
+      <YStack gap="$4" bc="$" jc="center">
+        <H1 ta="center">Transformers.js + Tamagui</H1>
+        <Paragraph ta="center">ML-powered multilingual translation in React!</Paragraph>
+      </YStack>
+      <Separator />
 
       <Translator />
-    </div>
+
+      <Button pos="absolute" b={30} l={20} icon={icons[theme]} onPress={toggle as any} circular />
+    </YStack>
   )
 }
