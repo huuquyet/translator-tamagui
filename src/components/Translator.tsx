@@ -1,8 +1,9 @@
 'use client'
 
+import { Languages } from '@tamagui/lucide-icons'
 import { pipeline } from '@xenova/transformers'
 import { useEffect, useRef, useState } from 'react'
-import { Button, TextArea, XStack, YStack } from 'tamagui'
+import { Button, Spinner, TextArea, XStack, YStack } from 'tamagui'
 import { LanguageSelector } from './LanguageSelector'
 import { MyProgress } from './MyProgress'
 
@@ -38,7 +39,6 @@ export const Translator = () => {
 
   // Update progress bar based on load progress
   useEffect(() => {
-    setDisabled(true)
     const items = Object.values(loadProgress)
     // if (items.length !== 5) return // 5 files to load
     let loaded = 0
@@ -50,9 +50,9 @@ export const Translator = () => {
     const progress = (loaded / total) * 100
     setProgress(progress)
     setStatusText(
-      progress === 100 ? 'Ready!' : `Loading model (${progress.toFixed()}% of 927MB)...`
+      progress === 100 ? 'Ready!' : `Loading model (${progress.toFixed(2)}% of 927MB)...`
     )
-    setDisabled(false)
+    setDisabled(progress !== 100)
   }, [loadProgress])
 
   const translate = async () => {
@@ -69,7 +69,7 @@ export const Translator = () => {
       tgt_lang: targetLanguage,
 
       // Allow for partial output
-      callback_function: (x: any) => {
+      callback_function: async (x: any) => {
         const decoded = translator.tokenizer.decode(x[0].output_token_ids, {
           skip_special_tokens: true,
         })
@@ -103,7 +103,11 @@ export const Translator = () => {
         </YStack>
       </XStack>
 
-      <Button disabled={disabled} onPress={translate}>
+      <Button
+        disabled={disabled}
+        icon={disabled ? <Spinner size="small" /> : <Languages />}
+        onPress={translate}
+      >
         Translate
       </Button>
 
