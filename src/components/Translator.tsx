@@ -29,7 +29,7 @@ export const Translator = () => {
   useEffect(() => {
     pipelinePromise.current ??= pipeline(task, model, {
       quantized: true,
-      progress_callback: (data) => {
+      progress_callback: (data: any) => {
         if (data.status !== 'progress') return
         setLoadProgress((prev) => ({ ...prev, [data.file]: data }))
       },
@@ -47,10 +47,10 @@ export const Translator = () => {
       loaded += data.loaded
       total += data.total
     }
-    const progress = loaded / total
+    const progress = (loaded / total) * 100
     setProgress(progress)
     setStatusText(
-      progress === 1 ? 'Ready!' : `Loading model (${(progress * 100).toFixed()}% of 927MB)...`
+      progress === 100 ? 'Ready!' : `Loading model (${progress.toFixed()}% of 927MB)...`
     )
     setDisabled(false)
   }, [loadProgress])
@@ -61,7 +61,7 @@ export const Translator = () => {
     setOutput('')
 
     // Get translator pipeline
-    const translator = pipelinePromise.current
+    const translator = await pipelinePromise.current
 
     // Translate input text
     const outputs = await translator(input, {
@@ -90,7 +90,7 @@ export const Translator = () => {
             defaultLanguage={'vie_Latn'}
             onChange={setSourceLanguage}
           />
-          <TextArea value={input} size="$8" onChange={setInput as any} />
+          <TextArea value={input} size="$6" onChange={setInput as any} />
         </YStack>
 
         <YStack gap="$4">
@@ -99,7 +99,7 @@ export const Translator = () => {
             defaultLanguage={'eng_Latn'}
             onChange={setTargetLanguage}
           />
-          <TextArea value={output} size="$8" readOnly />
+          <TextArea value={output} size="$6" readOnly />
         </YStack>
       </XStack>
 

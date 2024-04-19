@@ -7,7 +7,7 @@ import { useServerInsertedHTML } from 'next/navigation'
 import { TamaguiProvider, type TamaguiProviderProps } from 'tamagui'
 import { config } from '../../tamagui.config'
 
-export const themeAtom = themeWithToggle('light' as mode)
+export const themeAtom = themeWithToggle('system' as mode)
 
 export default function Provider({ children, ...rest }: Omit<TamaguiProviderProps, 'config'>) {
   const [theme, setTheme] = useRootTheme()
@@ -37,7 +37,7 @@ export default function Provider({ children, ...rest }: Omit<TamaguiProviderProp
 
   return (
     <NextThemeProvider onChangeTheme={setTheme as any}>
-      <TamaguiProvider config={config} defaultTheme={current()} disableInjectCSS {...rest}>
+      <TamaguiProvider config={config} defaultTheme={current()} {...rest}>
         {children}
       </TamaguiProvider>
     </NextThemeProvider>
