@@ -7,7 +7,7 @@ import { Button, Spinner, TextArea, XStack, YStack } from 'tamagui'
 import { LanguageSelector } from './LanguageSelector'
 import { MyProgress } from './MyProgress'
 
-export const Translator = () => {
+export default function Translator() {
   // Model loading
   const [disabled, setDisabled] = useState(true)
   const [loadProgress, setLoadProgress] = useState({})

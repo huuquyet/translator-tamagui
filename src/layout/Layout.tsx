@@ -1,9 +1,9 @@
 'use client'
 
-import { Translator } from '@/components/Translator'
 import { themeAtom } from '@/provider'
 import { Monitor, Moon, Sun } from '@tamagui/lucide-icons'
 import { useAtom } from 'jotai'
+import type { ReactNode } from 'react'
 import { Anchor, Button, H1, Paragraph, XStack, YStack } from 'tamagui'
 
 const icons: any = {
@@ -12,7 +12,7 @@ const icons: any = {
   system: <Monitor />,
 }
 
-export default function HomeScreen() {
+export default function Layout({ children }: { children: ReactNode }) {
   const [theme, toggle] = useAtom(themeAtom)
 
   return (
@@ -24,7 +24,7 @@ export default function HomeScreen() {
         </Paragraph>
       </YStack>
 
-      <Translator />
+      {children}
 
       <XStack pos="absolute" b="$4">
         <Paragraph ta="center">
