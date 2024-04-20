@@ -6,7 +6,8 @@ export const LanguageSelector = ({
   return (
     <div className="w-1/2 gap-5">
       <label>{type}: </label>
-      <select aria-label="Select language"
+      <select
+        aria-label="Select language"
         className="w-40 p-1 cursor-pointer"
         onChange={onChange}
         defaultValue={defaultLanguage}
@@ -26,6 +27,8 @@ export const LanguageSelector = ({
 // The full list of languages in FLORES-200 is available here:
 // https://github.com/facebookresearch/flores/blob/main/flores200/README.md#languages-in-flores-200
 const LANGUAGES = {
+  Vietnamese: 'vie_Latn',
+  English: 'eng_Latn',
   'Acehnese (Arabic script)': 'ace_Arab',
   'Acehnese (Latin script)': 'ace_Latn',
   Afrikaans: 'afr_Latn',
@@ -72,7 +75,6 @@ const LANGUAGES = {
   'Eastern Panjabi': 'pan_Guru',
   'Eastern Yiddish': 'ydd_Hebr',
   'Egyptian Arabic': 'arz_Arab',
-  English: 'eng_Latn',
   Esperanto: 'epo_Latn',
   Estonian: 'est_Latn',
   Ewe: 'ewe_Latn',
@@ -220,7 +222,6 @@ const LANGUAGES = {
   Urdu: 'urd_Arab',
   Uyghur: 'uig_Arab',
   Venetian: 'vec_Latn',
-  Vietnamese: 'vie_Latn',
   Waray: 'war_Latn',
   Welsh: 'cym_Latn',
   'West Central Oromo': 'gaz_Latn',

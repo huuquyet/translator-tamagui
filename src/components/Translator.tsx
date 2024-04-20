@@ -46,12 +46,12 @@ export const Translator = () => {
       loaded += data.loaded
       total += data.total
     }
-    const progress = loaded / total
+    const progress = (loaded / total) * 100
     setProgress(progress)
     setStatusText(
-      progress === 1 ? 'Ready!' : `Loading model (${(progress * 100).toFixed()}% of 927MB)...`
+      progress === 100 ? 'Ready!' : `Loading model (${progress.toFixed()}% of 927MB)...`
     )
-    setDisabled(false)
+    setDisabled(progress !== 100)
   }, [loadProgress])
 
   const translate = async () => {
