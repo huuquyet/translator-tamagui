@@ -1,6 +1,6 @@
 import { LinearGradient } from '@tamagui/linear-gradient'
 import { Check, ChevronDown, ChevronUp } from '@tamagui/lucide-icons'
-import { Adapt, Paragraph, Select, Sheet, YStack } from 'tamagui'
+import { Adapt, Paragraph, Select, Sheet, XStack, YStack } from 'tamagui'
 
 export const LanguageSelector = ({
   type,
@@ -8,10 +8,10 @@ export const LanguageSelector = ({
   defaultLanguage,
 }: { type: string; onChange: any; defaultLanguage: string }) => {
   return (
-    <YStack f={1} ai="center">
+    <XStack f={1} ai="center">
       <Paragraph>{type}: </Paragraph>
-      <Select size="$4" onValueChange={onChange} defaultValue={defaultLanguage}>
-        <Select.Trigger iconAfter={ChevronDown}>
+      <Select onValueChange={onChange} defaultValue={defaultLanguage}>
+        <Select.Trigger w="$15" iconAfter={ChevronDown}>
           <Select.Value placeholder="Languages" />
         </Select.Trigger>
 
@@ -43,7 +43,7 @@ export const LanguageSelector = ({
               br="$4"
             />
           </Select.ScrollUpButton>
-          <Select.Viewport>
+          <Select.Viewport minWidth="$15">
             <Select.Group>
               <Select.Label>Languages</Select.Label>
               {Object.entries(LANGUAGES).map(([key, value], index) => (
@@ -70,13 +70,15 @@ export const LanguageSelector = ({
           </Select.ScrollDownButton>
         </Select.Content>
       </Select>
-    </YStack>
+    </XStack>
   )
 }
 
 // The full list of languages in FLORES-200 is available here:
 // https://github.com/facebookresearch/flores/blob/main/flores200/README.md#languages-in-flores-200
 const LANGUAGES = {
+  Vietnamese: 'vie_Latn',
+  English: 'eng_Latn',
   'Acehnese (Arabic script)': 'ace_Arab',
   'Acehnese (Latin script)': 'ace_Latn',
   Afrikaans: 'afr_Latn',
@@ -123,7 +125,6 @@ const LANGUAGES = {
   'Eastern Panjabi': 'pan_Guru',
   'Eastern Yiddish': 'ydd_Hebr',
   'Egyptian Arabic': 'arz_Arab',
-  English: 'eng_Latn',
   Esperanto: 'epo_Latn',
   Estonian: 'est_Latn',
   Ewe: 'ewe_Latn',
@@ -271,7 +272,6 @@ const LANGUAGES = {
   Urdu: 'urd_Arab',
   Uyghur: 'uig_Arab',
   Venetian: 'vec_Latn',
-  Vietnamese: 'vie_Latn',
   Waray: 'war_Latn',
   Welsh: 'cym_Latn',
   'West Central Oromo': 'gaz_Latn',
