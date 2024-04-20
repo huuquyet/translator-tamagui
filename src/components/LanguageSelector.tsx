@@ -8,7 +8,7 @@ export const LanguageSelector = ({
   defaultLanguage,
 }: { type: string; onChange: any; defaultLanguage: string }) => {
   return (
-    <XStack f={1} ai="center">
+    <XStack f={1} ai="center" jc="space-evenly">
       <Paragraph>{type}: </Paragraph>
       <Select onValueChange={onChange} defaultValue={defaultLanguage}>
         <Select.Trigger w="$15" iconAfter={ChevronDown}>

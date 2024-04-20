@@ -37,7 +37,7 @@ export default function Provider({ children, ...rest }: Omit<TamaguiProviderProp
 
   return (
     <NextThemeProvider onChangeTheme={setTheme as any}>
-      <TamaguiProvider config={config} defaultTheme={current()} {...rest}>
+      <TamaguiProvider config={config} defaultTheme={current()} disableInjectCSS {...rest}>
         {children}
       </TamaguiProvider>
     </NextThemeProvider>

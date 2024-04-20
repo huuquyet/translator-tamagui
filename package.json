@@ -30,10 +30,12 @@
   },
   "devDependencies": {
     "@tamagui/config": "latest",
+    "@tamagui/core": "latest",
     "@types/node": "^20.12.7",
     "@types/react": "^18.2.79",
+    "@types/react-native": "^0.73.0",
     "expo-linear-gradient": "~12.7.2",
-    "react-native": "^0.73.7",
+    "react-native": "0.0.0",
     "react-native-svg": "14.1.0",
     "react-native-web": "^0.19.10",
     "sharp": "^0.33.3",

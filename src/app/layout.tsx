@@ -1,8 +1,12 @@
 import Provider from '@/provider'
+import '@tamagui/core/reset.css'
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
-import '../../tamagui.css'
+
+if (process.env.NODE_ENV === 'production') {
+  require('../../public/tamagui.css')
+}
 
 const APP_NAME = 'Translator Demo'
 const APP_DEFAULT_TITLE = 'Translator demo app built with Transformers.js + Tamagui + Next.js'

@@ -4,7 +4,7 @@ import { themeAtom } from '@/provider'
 import { Monitor, Moon, Sun } from '@tamagui/lucide-icons'
 import { useAtom } from 'jotai'
 import type { ReactNode } from 'react'
-import { Anchor, Button, H1, Paragraph, XStack, YStack } from 'tamagui'
+import { Anchor, Button, H1, Paragraph, Separator, XStack, YStack } from 'tamagui'
 
 const icons: any = {
   dark: <Moon />,
@@ -23,6 +23,7 @@ export default function Layout({ children }: { children: ReactNode }) {
           ML-powered multilingual translation directly in your browser!
         </Paragraph>
       </YStack>
+      <Separator als="stretch" />
 
       {children}
 

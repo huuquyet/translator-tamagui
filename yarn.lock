@@ -3669,7 +3669,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tamagui/core@npm:1.94.5":
+"@tamagui/core@npm:1.94.5, @tamagui/core@npm:latest":
   version: 1.94.5
   resolution: "@tamagui/core@npm:1.94.5"
   dependencies:
@@ -4868,6 +4868,15 @@ __metadata:
   version: 15.7.12
   resolution: "@types/prop-types@npm:15.7.12"
   checksum: 10/ac16cc3d0a84431ffa5cfdf89579ad1e2269549f32ce0c769321fdd078f84db4fbe1b461ed5a1a496caf09e637c0e367d600c541435716a55b1d9713f5035dfe
+  languageName: node
+  linkType: hard
+
+"@types/react-native@npm:^0.73.0":
+  version: 0.73.0
+  resolution: "@types/react-native@npm:0.73.0"
+  dependencies:
+    react-native: "npm:*"
+  checksum: 10/a764ca5d876dae3c109da449f736c44271b3b236d0d6e836c078247af1419f6d851600c56bb0c26f3e0d1b4be6eaac56b65c1f74ad0f0d05baf8b65dd1d5c597
   languageName: node
   linkType: hard
 
@@ -10569,7 +10578,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native@npm:^0.73.7":
+"react-native@npm:*":
   version: 0.73.7
   resolution: "react-native@npm:0.73.7"
   dependencies:
@@ -10616,6 +10625,13 @@ __metadata:
   bin:
     react-native: cli.js
   checksum: 10/2e6c41f676266e68f7a0bd85b2539629e93fc7ad8cdaff4d4b89fde7d188b163a169c2d89727faa832b27202659c89f795ff34430362f08805753a1260145c89
+  languageName: node
+  linkType: hard
+
+"react-native@npm:0.0.0":
+  version: 0.0.0
+  resolution: "react-native@npm:0.0.0"
+  checksum: 10/1fbd7e5d057265a9f9d25893dabaad9ea5471834e40d8f371f6230b54a8fdbbfd89412d10b16d71d27b22d05254bea75adaee20df0dd19d4fedf99e0be51285d
   languageName: node
   linkType: hard
 
@@ -12194,12 +12210,14 @@ __metadata:
   dependencies:
     "@ducanh2912/next-pwa": "npm:^10.2.6"
     "@tamagui/config": "npm:latest"
+    "@tamagui/core": "npm:latest"
     "@tamagui/linear-gradient": "npm:latest"
     "@tamagui/lucide-icons": "npm:latest"
     "@tamagui/next-plugin": "npm:latest"
     "@tamagui/next-theme": "npm:latest"
     "@types/node": "npm:^20.12.7"
     "@types/react": "npm:^18.2.79"
+    "@types/react-native": "npm:^0.73.0"
     "@vercel/analytics": "npm:^1.2.2"
     "@xenova/transformers": "npm:^2.17.1"
     expo-linear-gradient: "npm:~12.7.2"
@@ -12208,7 +12226,7 @@ __metadata:
     onnxruntime-node: "npm:^1.17.0"
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
-    react-native: "npm:^0.73.7"
+    react-native: "npm:0.0.0"
     react-native-svg: "npm:14.1.0"
     react-native-web: "npm:^0.19.10"
     sharp: "npm:^0.33.3"

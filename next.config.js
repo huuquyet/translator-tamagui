@@ -15,12 +15,12 @@ const disableExtraction =
 const plugins = [
   withTamagui({
     config: './tamagui.config.ts',
-    appDir: true,
     components: ['tamagui'],
-    importsWhitelist: ['constants.js', 'colors.js'],
-    outputCSS: process.env.NODE_ENV === 'production' ? './public/tamagui.css' : './tamagui.css',
-    logTimings: true,
+    appDir: true,
     disableExtraction,
+    importsWhitelist: ['constants.js', 'colors.js'],
+    outputCSS: process.env.NODE_ENV === 'production' ? './public/tamagui.css' : null,
+    logTimings: true,
     excludeReactNativeWebExports: ['Switch', 'ProgressBar', 'Picker', 'CheckBox', 'Touchable'],
   }),
   withPWA,

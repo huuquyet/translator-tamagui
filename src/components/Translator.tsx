@@ -1,9 +1,9 @@
 'use client'
 
 import { Languages } from '@tamagui/lucide-icons'
-import { pipeline } from '@xenova/transformers'
+import { type TranslationPipeline, pipeline } from '@xenova/transformers'
 import { useEffect, useRef, useState } from 'react'
-import { Button, Spinner, TextArea, XStack, YStack } from 'tamagui'
+import { Button, Separator, Spinner, TextArea, XStack, YStack } from 'tamagui'
 import { LanguageSelector } from './LanguageSelector'
 import { MyProgress } from './MyProgress'
 
@@ -24,7 +24,7 @@ export default function Translator() {
   const model = 'Xenova/nllb-200-distilled-600M'
 
   // Pipeline references
-  const pipelinePromise = useRef(null)
+  const pipelinePromise = useRef<TranslationPipeline | null>(null)
 
   // Load translator pipeline on first render
   useEffect(() => {
@@ -61,7 +61,7 @@ export default function Translator() {
     setOutput('')
 
     // Get translator pipeline
-    const translator = await pipelinePromise.current
+    const translator = await pipelinePromise.current!
 
     // Translate input text
     const outputs = await translator(input, {
@@ -90,8 +90,9 @@ export default function Translator() {
             defaultLanguage={'vie_Latn'}
             onChange={setSourceLanguage}
           />
-          <TextArea value={input} size="$6" onChange={setInput as any} />
+          <TextArea value={input} size="$6" w="$20" onChange={setInput as any} />
         </YStack>
+        <Separator als="stretch" vertical />
 
         <YStack gap="$4">
           <LanguageSelector
@@ -99,14 +100,14 @@ export default function Translator() {
             defaultLanguage={'eng_Latn'}
             onChange={setTargetLanguage}
           />
-          <TextArea value={output} size="$6" readOnly />
+          <TextArea value={output} size="$6" w="$20" readOnly />
         </YStack>
       </XStack>
 
       <Button
         disabled={disabled}
         icon={disabled ? <Spinner size="small" /> : <Languages />}
-        onPress={translate}
+        onPress={async () => translate()}
       >
         Translate
       </Button>
