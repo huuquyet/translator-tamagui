@@ -1,38 +1,42 @@
 'use client'
 
-import { pipeline } from '@xenova/transformers'
+import { MyProgress } from '@/components/MyProgress'
+import { AutoModelForSeq2SeqLM, AutoTokenizer } from '@xenova/transformers'
 import { useEffect, useRef, useState } from 'react'
-import { LanguageSelector } from './LanguageSelector'
-import { MyProgress } from './MyProgress'
 
 export default function Translator() {
   // Model loading
   const [disabled, setDisabled] = useState(true)
   const [loadProgress, setLoadProgress] = useState({})
   const [progress, setProgress] = useState(0)
-  const [statusText, setStatusText] = useState('Loading model (927MB)...')
+  const [statusText, setStatusText] = useState('Loading model (511MB)...')
 
   // Inputs and outputs
-  const [input, setInput] = useState('Tôi yêu Việt Nam quê hương tôi.')
+  const [input, setInput] = useState(
+    "I haven't been to a public gym before. When I exercise in a private space, I feel more comfortable."
+  )
   const [sourceLanguage, setSourceLanguage] = useState('vie_Latn')
   const [targetLanguage, setTargetLanguage] = useState('eng_Latn')
   const [output, setOutput] = useState('')
 
-  const task = 'translation'
-  const model = 'Xenova/nllb-200-distilled-600M'
+  const MODEL_ID = 'huuquyet/vinai-translate-en2vi-v2'
 
-  // Pipeline references
-  const pipelinePromise = useRef(null)
+  // Model and tokenizer references
+  const modelPromise = useRef(null)
+  const tokenizerPromise = useRef(null)
 
   // Load translator pipeline on first render
   useEffect(() => {
-    pipelinePromise.current ??= pipeline(task, model, {
-      quantized: true,
+    modelPromise.current ??= AutoModelForSeq2SeqLM.from_pretrained(MODEL_ID, {
+      src_lang: 'en_EN',
       progress_callback: (data) => {
         if (data.status !== 'progress') return
         setLoadProgress((prev) => ({ ...prev, [data.file]: data }))
       },
+    //   device: 'wasm',
     })
+
+    tokenizerPromise.current ??= AutoTokenizer.from_pretrained(MODEL_ID)
   }, [])
 
   // Update progress bar based on load progress
@@ -49,7 +53,7 @@ export default function Translator() {
     const progress = (loaded / total) * 100
     setProgress(progress)
     setStatusText(
-      progress === 100 ? 'Ready!' : `Loading model (${progress.toFixed()}% of 927MB)...`
+      progress === 100 ? 'Ready!' : `Loading model (${progress.toFixed()}% of 511MB)...`
     )
     setDisabled(progress !== 100)
   }, [loadProgress])
@@ -59,51 +63,44 @@ export default function Translator() {
     setStatusText('Translating...')
     setOutput('')
 
-    // Get translator pipeline
-    const translator = await pipelinePromise.current
+    // Get model and tokenizer
+    const model = await modelPromise.current
+    const tokenizer = await tokenizerPromise.current
 
-    // Translate input text
-    const outputs = await translator(input, {
-      src_lang: sourceLanguage,
-      tgt_lang: targetLanguage,
-
-      // Allow for partial output
-      callback_function: (x: any) => {
-        const decoded = translator.tokenizer.decode(x[0].output_token_ids, {
-          skip_special_tokens: true,
-        })
-        setOutput(decoded)
-      },
-    })
-
-    setStatusText('Done!')
+    const { input_ids } = await tokenizer(input)
+    const outputs = await model.generate(input_ids)
+    const decoded = tokenizer.decode(outputs[0])//, { skip_special_tokens: true })
+    setOutput(decoded)
     setDisabled(false)
+    setStatusText('Done!')
   }
 
   return (
     <>
       <div className="flex flex-col items-center m-6 gap-2">
         <div className="flex w-2/3 gap-5">
-          <LanguageSelector
-            type={'Source'}
-            defaultLanguage={'vie_Latn'}
-            onChange={(x: any) => setSourceLanguage(x.target.value)}
-          />
-          <LanguageSelector
-            type={'Target'}
-            defaultLanguage={'eng_Latn'}
-            onChange={(x: any) => setTargetLanguage(x.target.value)}
-          />
+          <div className="w-1/2">
+            Source:
+            <button type="button" disabled className="mb-4 p-3">
+              English
+            </button>
+          </div>
+          <div className="w-1/2">
+            Target:
+            <button type="button" disabled className="mb-4 p-3">
+              Vietnamese
+            </button>
+          </div>
         </div>
 
         <div className="w-2/3 gap-5">
           <textarea
-            className="w-1/2 p-2 gap-5"
+            className="w-1/2 p-2"
             value={input}
-            rows={3}
+            rows={6}
             onChange={(e) => setInput(e.target.value)}
           />
-          <textarea className="w-1/2 p-2 gap-5" value={output} rows={3} readOnly />
+          <textarea className="w-1/2 p-2" value={output} rows={6} readOnly />
         </div>
       </div>
 

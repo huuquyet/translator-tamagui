@@ -1,6 +1,7 @@
 'use client'
 
 import { Translator } from '@/components/Translator'
+import Link from 'next/link'
 import type { ReactNode } from 'react'
 
 export default function Layout({ children }: { children: ReactNode }) {
@@ -13,6 +14,21 @@ export default function Layout({ children }: { children: ReactNode }) {
           🤗 Transformers.js!
         </a>
       </h3>
+
+      <div className="flex gap-2 justify-center">
+        <Link
+          href="/nllb"
+          className="mb-4 bg-green-500 hover:bg-green-400 transition-colors duration-100 text-white p-3"
+        >
+          NLLB
+        </Link>
+        <Link
+          href="/vinai"
+          className="mb-4 bg-green-500 hover:bg-green-400 transition-colors duration-100 text-white p-3"
+        >
+          VinAI
+        </Link>
+      </div>
 
       {children}
 
