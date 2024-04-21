@@ -4,7 +4,7 @@ export const LanguageSelector = ({
   defaultLanguage,
 }: { type: string; onChange: any; defaultLanguage: string }) => {
   return (
-    <div className="w-1/2 gap-5">
+    <div className="w-1/2 p-2 gap-5">
       <label>{type}: </label>
       <select
         aria-label="Select language"

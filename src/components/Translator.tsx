@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from 'react'
 import { LanguageSelector } from './LanguageSelector'
 import { MyProgress } from './MyProgress'
 
-export const Translator = () => {
+export default function Translator() {
   // Model loading
   const [disabled, setDisabled] = useState(true)
   const [loadProgress, setLoadProgress] = useState({})
@@ -82,8 +82,8 @@ export const Translator = () => {
 
   return (
     <>
-      <div className="flex flex-col m-6 gap-2">
-        <div className="flex gap-5">
+      <div className="flex flex-col items-center m-6 gap-2">
+        <div className="flex w-2/3 gap-5">
           <LanguageSelector
             type={'Source'}
             defaultLanguage={'vie_Latn'}
@@ -96,19 +96,19 @@ export const Translator = () => {
           />
         </div>
 
-        <div className="flex justify-center gap-5 w-full">
+        <div className="w-2/3 gap-5">
           <textarea
-            className="w-1/2 p-2"
+            className="w-1/2 p-2 gap-5"
             value={input}
             rows={3}
             onChange={(e) => setInput(e.target.value)}
           />
-          <textarea className="w-1/2 p-2" value={output} rows={3} readOnly />
+          <textarea className="w-1/2 p-2 gap-5" value={output} rows={3} readOnly />
         </div>
       </div>
 
       <button
-        className="mb-4 bg-green-500 hover:bg-green-400 transition-colors duration-100 text-white px-4 py-3 rounded-lg font-semibold"
+        className="mb-4 bg-blue-400 hover:bg-blue-300 transition-colors duration-100 text-white px-4 py-3 rounded-lg font-semibold"
         type="button"
         disabled={disabled}
         onClick={translate}
@@ -116,7 +116,7 @@ export const Translator = () => {
         Translate
       </button>
 
-      <div className="w-1/2 mx-auto p-1 h-36 text-center">
+      <div className="w-1/2 mx-auto p-1 h-24">
         <MyProgress text={statusText} percentage={progress} />
       </div>
     </>
