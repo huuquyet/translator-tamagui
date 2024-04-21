@@ -1,24 +1,40 @@
 'use client'
 
-import { MyProgress } from '@/components/MyProgress'
 import { pipeline } from '@xenova/transformers'
 import { useEffect, useRef, useState } from 'react'
+import { LanguageSelector } from './LanguageSelector'
+import { MyProgress } from './MyProgress'
 
-export default function Translator() {
+export default function Translator({
+  initSource,
+  initTarget,
+  model,
+  example,
+  size,
+  disableSelect,
+  langList,
+}: {
+  initSource: string
+  initTarget: string
+  model: string
+  example: string
+  size: string
+  disableSelect: boolean
+  langList: any
+}) {
   // Model loading
   const [disabled, setDisabled] = useState(true)
   const [loadProgress, setLoadProgress] = useState({})
   const [progress, setProgress] = useState(0)
-  const [statusText, setStatusText] = useState('Loading model (511MB)...')
+  const [statusText, setStatusText] = useState(`Loading ${model} model (${size})...`)
 
   // Inputs and outputs
-  const [input, setInput] = useState(
-    "I haven't been to a public gym before. When I exercise in a private space, I feel more comfortable."
-  )
+  const [input, setInput] = useState(example)
+  const [sourceLanguage, setSourceLanguage] = useState(initSource)
+  const [targetLanguage, setTargetLanguage] = useState(initTarget)
   const [output, setOutput] = useState('')
 
   const task = 'translation'
-  const model = 'huuquyet/vinai-translate-en2vi-v2'
 
   // Pipeline references
   const pipelinePromise = useRef(null)
@@ -26,6 +42,7 @@ export default function Translator() {
   // Load translator pipeline on first render
   useEffect(() => {
     pipelinePromise.current ??= pipeline(task, model, {
+      quantized: true,
       progress_callback: (data) => {
         if (data.status !== 'progress') return
         setLoadProgress((prev) => ({ ...prev, [data.file]: data }))
@@ -47,7 +64,7 @@ export default function Translator() {
     const progress = (loaded / total) * 100
     setProgress(progress)
     setStatusText(
-      progress === 100 ? 'Ready!' : `Loading model (${progress.toFixed()}% of 511MB)...`
+      progress === 100 ? 'Ready!' : `Loading ${model} model (${progress.toFixed(2)}% of ${size})...`
     )
     setDisabled(progress !== 100)
   }, [loadProgress])
@@ -62,8 +79,8 @@ export default function Translator() {
 
     // Translate input text
     const outputs = await translator(input, {
-      src_lang: 'en_XX',
-      tgt_lang: 'vi_VN',
+      src_lang: sourceLanguage,
+      tgt_lang: targetLanguage,
 
       // Allow for partial output
       callback_function: (x: any) => {
@@ -74,29 +91,31 @@ export default function Translator() {
       },
     })
 
-    setDisabled(false)
     setStatusText('Done!')
+    setDisabled(false)
   }
 
   return (
     <>
       <div className="flex flex-col items-center m-6 gap-2">
-        <div className="flex w-2/3 gap-5">
-          <div className="w-1/2">
-            Source:
-            <button type="button" disabled className="mb-4 p-3">
-              English
-            </button>
-          </div>
-          <div className="w-1/2">
-            Target:
-            <button type="button" disabled className="mb-4 p-3">
-              Vietnamese
-            </button>
-          </div>
+        <div className="flex w-4/5 gap-5">
+          <LanguageSelector
+            type={'Source'}
+            defaultLanguage={initSource}
+            disableSelect={disableSelect}
+            langList={langList}
+            onChange={(x: any) => setSourceLanguage(x.target.value)}
+          />
+          <LanguageSelector
+            type={'Target'}
+            defaultLanguage={initTarget}
+            disableSelect={disableSelect}
+            langList={langList}
+            onChange={(x: any) => setTargetLanguage(x.target.value)}
+          />
         </div>
 
-        <div className="w-2/3 gap-5">
+        <div className="w-4/5 gap-5">
           <textarea
             className="w-1/2 p-2"
             value={input}
@@ -116,7 +135,7 @@ export default function Translator() {
         Translate
       </button>
 
-      <div className="w-1/2 mx-auto p-1 h-24">
+      <div className="w-4/5 mx-auto p-1 h-24">
         <MyProgress text={statusText} percentage={progress} />
       </div>
     </>

@@ -1,26 +1,21 @@
-export const LanguageSelector = ({
-  type,
-  onChange,
-  defaultLanguage,
-}: { type: string; onChange: any; defaultLanguage: string }) => {
+'use client'
+
+import Translator from '@/components/Translator'
+
+export default function App() {
+  const model = 'Xenova/nllb-200-distilled-600M'
+  const example = 'Tôi yêu Việt Nam quê hương tôi.'
+
   return (
-    <div className="w-1/2 p-2">
-      <label>{type}: </label>
-      <select
-        aria-label="Select language"
-        className="w-40 p-1 cursor-pointer"
-        onChange={onChange}
-        defaultValue={defaultLanguage}
-      >
-        {Object.entries(LANGUAGES).map(([key, value]) => {
-          return (
-            <option key={key} value={value}>
-              {key}
-            </option>
-          )
-        })}
-      </select>
-    </div>
+    <Translator
+      initSource="vie_Latn"
+      initTarget="eng_Latn"
+      model={model}
+      example={example}
+      size="927MB"
+      disableSelect={false}
+      langList={LANGUAGES}
+    />
   )
 }
 
