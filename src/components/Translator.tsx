@@ -7,21 +7,36 @@ import { Button, Separator, Spinner, TextArea, XStack, YStack } from 'tamagui'
 import { LanguageSelector } from './LanguageSelector'
 import { MyProgress } from './MyProgress'
 
-export default function Translator() {
+export const Translator = ({
+  initSource,
+  initTarget,
+  model,
+  example,
+  size,
+  disableSelect,
+  LANGUAGES,
+}: {
+  initSource: string
+  initTarget: string
+  model: string
+  example: string
+  size: string
+  disableSelect: boolean
+  LANGUAGES: object
+}) => {
   // Model loading
   const [disabled, setDisabled] = useState(true)
   const [loadProgress, setLoadProgress] = useState({})
   const [progress, setProgress] = useState(0)
-  const [statusText, setStatusText] = useState('Loading model (927MB)...')
+  const [statusText, setStatusText] = useState(`Loading ${model} model (${size})...`)
 
   // Inputs and outputs
-  const [input, setInput] = useState('Tôi yêu Việt Nam quê hương tôi.')
-  const [sourceLanguage, setSourceLanguage] = useState('vie_Latn')
-  const [targetLanguage, setTargetLanguage] = useState('eng_Latn')
+  const [input, setInput] = useState(example)
+  const [sourceLanguage, setSourceLanguage] = useState(initSource)
+  const [targetLanguage, setTargetLanguage] = useState(initTarget)
   const [output, setOutput] = useState('')
 
   const task = 'translation'
-  const model = 'Xenova/nllb-200-distilled-600M'
 
   // Pipeline references
   const pipelinePromise = useRef<TranslationPipeline | null>(null)
@@ -50,7 +65,7 @@ export default function Translator() {
     const progress = (loaded / total) * 100
     setProgress(progress)
     setStatusText(
-      progress === 100 ? 'Ready!' : `Loading model (${progress.toFixed(2)}% of 927MB)...`
+      progress === 100 ? 'Ready!' : `Loading %{model} model (${progress.toFixed(2)}% of ${size})...`
     )
     setDisabled(progress !== 100)
   }, [loadProgress])
@@ -87,8 +102,10 @@ export default function Translator() {
         <YStack gap="$4">
           <LanguageSelector
             type={'Source'}
-            defaultLanguage={'vie_Latn'}
+            defaultLanguage={initSource}
             onChange={setSourceLanguage}
+            disableSelect={disableSelect}
+            LANGUAGES={LANGUAGES}
           />
           <TextArea value={input} size="$6" w="$20" onChange={setInput as any} />
         </YStack>
@@ -97,8 +114,10 @@ export default function Translator() {
         <YStack gap="$4">
           <LanguageSelector
             type={'Target'}
-            defaultLanguage={'eng_Latn'}
+            defaultLanguage={initTarget}
             onChange={setTargetLanguage}
+            disableSelect={disableSelect}
+            LANGUAGES={LANGUAGES}
           />
           <TextArea value={output} size="$6" w="$20" readOnly />
         </YStack>
