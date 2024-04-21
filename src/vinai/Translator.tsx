@@ -1,7 +1,7 @@
 'use client'
 
 import { MyProgress } from '@/components/MyProgress'
-import { AutoModelForSeq2SeqLM, AutoTokenizer } from '@xenova/transformers'
+import { pipeline } from '@xenova/transformers'
 import { useEffect, useRef, useState } from 'react'
 
 export default function Translator() {
@@ -15,28 +15,22 @@ export default function Translator() {
   const [input, setInput] = useState(
     "I haven't been to a public gym before. When I exercise in a private space, I feel more comfortable."
   )
-  const [sourceLanguage, setSourceLanguage] = useState('vie_Latn')
-  const [targetLanguage, setTargetLanguage] = useState('eng_Latn')
   const [output, setOutput] = useState('')
 
-  const MODEL_ID = 'huuquyet/vinai-translate-en2vi-v2'
+  const task = 'translation'
+  const model = 'huuquyet/vinai-translate-en2vi-v2'
 
-  // Model and tokenizer references
-  const modelPromise = useRef(null)
-  const tokenizerPromise = useRef(null)
+  // Pipeline references
+  const pipelinePromise = useRef(null)
 
   // Load translator pipeline on first render
   useEffect(() => {
-    modelPromise.current ??= AutoModelForSeq2SeqLM.from_pretrained(MODEL_ID, {
-      src_lang: 'en_EN',
+    pipelinePromise.current ??= pipeline(task, model, {
       progress_callback: (data) => {
         if (data.status !== 'progress') return
         setLoadProgress((prev) => ({ ...prev, [data.file]: data }))
       },
-    //   device: 'wasm',
     })
-
-    tokenizerPromise.current ??= AutoTokenizer.from_pretrained(MODEL_ID)
   }, [])
 
   // Update progress bar based on load progress
@@ -63,14 +57,23 @@ export default function Translator() {
     setStatusText('Translating...')
     setOutput('')
 
-    // Get model and tokenizer
-    const model = await modelPromise.current
-    const tokenizer = await tokenizerPromise.current
+    // Get translator pipeline
+    const translator = await pipelinePromise.current
 
-    const { input_ids } = await tokenizer(input)
-    const outputs = await model.generate(input_ids)
-    const decoded = tokenizer.decode(outputs[0])//, { skip_special_tokens: true })
-    setOutput(decoded)
+    // Translate input text
+    const outputs = await translator(input, {
+      src_lang: 'en_XX',
+      tgt_lang: 'vi_VN',
+
+      // Allow for partial output
+      callback_function: (x: any) => {
+        const decoded = translator.tokenizer.decode(x[0].output_token_ids, {
+          skip_special_tokens: true,
+        })
+        setOutput(decoded)
+      },
+    })
+
     setDisabled(false)
     setStatusText('Done!')
   }
