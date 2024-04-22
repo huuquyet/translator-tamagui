@@ -46,6 +46,7 @@ let nextConfig = {
   experimental: {
     // optimizeCss: true,
     scrollRestoration: true,
+    serverComponentsExternalPackages: ['sharp', 'onnxruntime-web'], // Indicate that these packages should not be bundled by webpack
   },
   reactStrictMode: true, // Recommended for the `pages` directory, default in `app`.
   // Override the default webpack configuration
