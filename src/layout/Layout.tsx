@@ -3,8 +3,9 @@
 import { themeAtom } from '@/provider'
 import { Monitor, Moon, Sun } from '@tamagui/lucide-icons'
 import { useAtom } from 'jotai'
+import Link from 'next/link'
 import type { ReactNode } from 'react'
-import { Anchor, Button, H1, Paragraph, Separator, XStack, YStack } from 'tamagui'
+import { Anchor, Button, H1, Paragraph, Separator, SizableText, XStack, YStack } from 'tamagui'
 
 const icons: any = {
   dark: <Moon />,
@@ -24,6 +25,18 @@ export default function Layout({ children }: { children: ReactNode }) {
         </Paragraph>
       </YStack>
       <Separator als="stretch" />
+
+      <XStack gap="$4">
+        <Link href="/nllb200">
+          <SizableText size="$4">NLLB200</SizableText>
+        </Link>
+        <Link href="/vinaivi2en">
+          <SizableText size="$4">VinAI Vi-En</SizableText>
+        </Link>
+        <Link href="/vinaien2vi">
+          <SizableText size="$4">VinAI En-Vi</SizableText>
+        </Link>
+      </XStack>
 
       {children}
 

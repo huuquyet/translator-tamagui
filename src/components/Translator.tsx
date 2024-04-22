@@ -65,7 +65,7 @@ export const Translator = ({
     const progress = (loaded / total) * 100
     setProgress(progress)
     setStatusText(
-      progress === 100 ? 'Ready!' : `Loading %{model} model (${progress.toFixed(2)}% of ${size})...`
+      progress === 100 ? 'Ready!' : `Loading ${model} model (${progress.toFixed(2)}% of ${size})...`
     )
     setDisabled(progress !== 100)
   }, [loadProgress])
@@ -107,7 +107,7 @@ export const Translator = ({
             disableSelect={disableSelect}
             LANGUAGES={LANGUAGES}
           />
-          <TextArea value={input} size="$6" w="$20" onChange={setInput as any} />
+          <TextArea value={input} size="$6" w="$20" rows={6} multiline onChange={setInput as any} />
         </YStack>
         <Separator als="stretch" vertical />
 
@@ -119,7 +119,7 @@ export const Translator = ({
             disableSelect={disableSelect}
             LANGUAGES={LANGUAGES}
           />
-          <TextArea value={output} size="$6" w="$20" readOnly />
+          <TextArea value={output} size="$6" w="$20" rows={6} multiline readOnly />
         </YStack>
       </XStack>
 

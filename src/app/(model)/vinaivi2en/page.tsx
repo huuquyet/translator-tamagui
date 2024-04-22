@@ -3,6 +3,6 @@
 import dynamic from 'next/dynamic'
 
 export default function Page() {
-  const App = dynamic(() => import('@/VinAIEn2Vi'), { ssr: false })
+  const App = dynamic(() => import('@/models/VinAIVi2En'), { ssr: false })
   return <App />
 }
