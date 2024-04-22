@@ -1,6 +1,6 @@
 import { LinearGradient } from '@tamagui/linear-gradient'
 import { Check, ChevronDown, ChevronUp } from '@tamagui/lucide-icons'
-import { Adapt, Paragraph, Select, Sheet, XStack, YStack } from 'tamagui'
+import { Adapt, Select, Sheet, SizableText, XStack, YStack } from 'tamagui'
 
 export const LanguageSelector = ({
   type,
@@ -17,7 +17,7 @@ export const LanguageSelector = ({
 }) => {
   return (
     <XStack f={1} ai="center" jc="space-evenly">
-      <Paragraph>{type}: </Paragraph>
+      <SizableText>{type}: </SizableText>
       <Select onValueChange={onChange} defaultValue={defaultLanguage}>
         <Select.Trigger w="$15" iconAfter={ChevronDown} disabled={disableSelect}>
           <Select.Value placeholder="Languages" />
