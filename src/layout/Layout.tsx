@@ -1,8 +1,14 @@
 'use client'
 
-import { Translator } from '@/components/Translator'
 import Link from 'next/link'
 import type { ReactNode } from 'react'
+
+const navItems: { label: string; slug: string; tooltip: string }[] = [
+  { label: 'NLLB200', slug: 'nllb200', tooltip: 'No Language Left Behind' },
+  { label: 'VinAI Vi-En', slug: 'vinaivi2en', tooltip: 'VinAI translate Vietnamese to English v2' },
+  { label: 'VinAI En-Vi', slug: 'vinaien2vi', tooltip: 'VinAI translate English to Vietnamese v2' },
+  { label: 'VietAI Vi-En', slug: 'vietai', tooltip: 'VietAI Vietnamese <-> English translation' },
+]
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
@@ -16,18 +22,19 @@ export default function Layout({ children }: { children: ReactNode }) {
       </h3>
 
       <div className="flex gap-2 justify-center">
-        <Link
-          href="/nllb"
-          className="mb-4 bg-green-500 hover:bg-green-400 transition-colors duration-100 text-white p-3"
-        >
-          NLLB
-        </Link>
-        <Link
-          href="/vinai"
-          className="mb-4 bg-green-500 hover:bg-green-400 transition-colors duration-100 text-white p-3"
-        >
-          VinAI
-        </Link>
+        {navItems.map(({ label, slug, tooltip }) => (
+          <Link
+            key={slug}
+            href={`/${slug}`}
+            className="group relative inline-block text-blue-500 underline hover:text-red-500 duration-300"
+          >
+            {label}
+            {/* Tooltip text here */}
+            <span className="absolute hidden group-hover:flex -top-2 -right-3 translate-x-full w-48 px-2 py-1 bg-gray-700 rounded-lg text-center text-white text-sm before:content-[''] before:absolute before:top-1/2  before:right-[100%] before:-translate-y-1/2 before:border-8 before:border-y-transparent before:border-l-transparent before:border-r-gray-700">
+              {tooltip}
+            </span>
+          </Link>
+        ))}
       </div>
 
       {children}

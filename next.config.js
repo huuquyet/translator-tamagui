@@ -7,7 +7,7 @@ const withPWA = require('@ducanh2912/next-pwa').default({
 const nextConfig = {
   // (Optional) Export as a static site
   // See https://nextjs.org/docs/pages/building-your-application/deploying/static-exports#configuration
-  output: 'export', // Outputs a Single-Page Application (SPA).
+  output: 'standalone', // Automatically copying traced files.
   distDir: './dist', // Changes the build output directory to `./dist/`.
 
   typescript: {
