@@ -4955,9 +4955,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@xenova/transformers@npm:^2.17.1":
+"@xenova/transformers#v3@npm:^2.17.1":
   version: 2.17.1
-  resolution: "@xenova/transformers@npm:2.17.1"
+  resolution: "@xenova/transformers#v3@npm:2.17.1::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2F%40xenova%2Ftransformers%2F-%2Ftransformers-2.17.1.tgz"
   dependencies:
     "@huggingface/jinja": "npm:^0.2.2"
     onnxruntime-node: "npm:1.14.0"
@@ -4966,7 +4966,7 @@ __metadata:
   dependenciesMeta:
     onnxruntime-node:
       optional: true
-  checksum: 10/5b8a811a60a9fdd6eb689d7b76978ba2216c5b162a81069f07730eff75441da012bf1d8275e762ee2930b99bf696f0875c16e2696ac9043ae5cf350056501312
+  checksum: 10/c144c92c250905a73f0e3135febace6b4103e57f7d442a2a7cf81f9ba993c075ec0d907c87f369d60c277c5090cefdc73e9443a60472a250ce54c84c1fa97496
   languageName: node
   linkType: hard
 
@@ -12250,7 +12250,7 @@ __metadata:
     "@types/react": "npm:^18.2.79"
     "@types/react-native": "npm:^0.73.0"
     "@vercel/analytics": "npm:^1.2.2"
-    "@xenova/transformers": "npm:^2.17.1"
+    "@xenova/transformers#v3": "npm:^2.17.1"
     expo-linear-gradient: "npm:~12.7.2"
     jotai: "npm:^2.8.0"
     next: "npm:^14.2.2"

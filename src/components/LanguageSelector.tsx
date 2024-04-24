@@ -2,19 +2,21 @@ import { LinearGradient } from '@tamagui/linear-gradient'
 import { Check, ChevronDown, ChevronUp } from '@tamagui/lucide-icons'
 import { Adapt, Select, Sheet, SizableText, XStack, YStack } from 'tamagui'
 
+interface LanguageSelectorProps {
+  type: string
+  onChange: any
+  defaultLanguage: string
+  disableSelect: boolean
+  LANGUAGES: object
+}
+
 export const LanguageSelector = ({
   type,
   onChange,
   defaultLanguage,
   disableSelect,
   LANGUAGES,
-}: {
-  type: string
-  onChange: any
-  defaultLanguage: string
-  disableSelect: boolean
-  LANGUAGES: object
-}) => {
+}: LanguageSelectorProps) => {
   return (
     <XStack f={1} ai="center" jc="space-evenly">
       <SizableText>{type}: </SizableText>

@@ -1,11 +1,21 @@
 'use client'
 
 import { Languages } from '@tamagui/lucide-icons'
-import { type TranslationPipeline, pipeline } from '@xenova/transformers'
+import { type TranslationPipeline, pipeline } from '@xenova/transformers#v3'
 import { useEffect, useRef, useState } from 'react'
 import { Button, Separator, Spinner, TextArea, XStack, YStack } from 'tamagui'
 import { LanguageSelector } from './LanguageSelector'
 import { MyProgress } from './MyProgress'
+
+interface TranslatorProps {
+  initSource: string
+  initTarget: string
+  model: string
+  example: string
+  size: string
+  disableSelect: boolean
+  LANGUAGES: object
+}
 
 export const Translator = ({
   initSource,
@@ -15,15 +25,7 @@ export const Translator = ({
   size,
   disableSelect,
   LANGUAGES,
-}: {
-  initSource: string
-  initTarget: string
-  model: string
-  example: string
-  size: string
-  disableSelect: boolean
-  LANGUAGES: object
-}) => {
+}: TranslatorProps) => {
   // Model loading
   const [disabled, setDisabled] = useState(true)
   const [loadProgress, setLoadProgress] = useState({})
@@ -44,7 +46,9 @@ export const Translator = ({
   // Load translator pipeline on first render
   useEffect(() => {
     pipelinePromise.current ??= pipeline(task, model, {
-      quantized: true,
+      // Use WebGPU v3 https://github.com/xenova/transformers.js/pull/545
+      device: 'webgpu',
+      dtype: 'fp32', // or 'fp16'
       progress_callback: (data: any) => {
         if (data.status !== 'progress') return
         setLoadProgress((prev) => ({ ...prev, [data.file]: data }))
@@ -89,11 +93,10 @@ export const Translator = ({
           skip_special_tokens: true,
         })
         setOutput(decoded)
+        setStatusText('Done!')
+        setDisabled(false)
       },
     })
-
-    setStatusText('Done!')
-    setDisabled(false)
   }
 
   return (
@@ -126,7 +129,7 @@ export const Translator = ({
       <Button
         disabled={disabled}
         icon={disabled ? <Spinner size="small" /> : <Languages />}
-        onPress={async () => translate()}
+        onPress={translate}
       >
         Translate
       </Button>
