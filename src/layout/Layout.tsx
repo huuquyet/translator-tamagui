@@ -36,16 +36,16 @@ export default function Layout({ children }: { children: ReactNode }) {
   const pathname = usePathname()
 
   return (
-    <YStack f={1} h="100vh" w="100%" jc="center" ai="center" p="$4" gap="$4">
-      <ScrollView jc="center" p="$4" gap="$4">
-        <YStack gap="$4" bc="$" jc="center">
+    <YStack f={1} h="100vh" w="100%" gap="$4">
+      <ScrollView mah="100vh" w="100%" jc="center" ai="center" p="$4" gap="$4">
+        <YStack bc="$" jc="center" gap="$4">
           <H1 ta="center">Transformers.js + Tamagui</H1>
           <SizableText ta="center">
             ML-powered multilingual translation directly in your browser!
           </SizableText>
         </YStack>
 
-        <XStack gap="$4">
+        <XStack jc="center" gap="$4">
           <SizableText>Model:</SizableText>
           {navItems.map(({ label, slug, tooltip }) => (
             <Tooltip placement="bottom" key={slug}>
@@ -97,7 +97,7 @@ export default function Layout({ children }: { children: ReactNode }) {
         </SizableText>
       </XStack>
 
-      <Button pos="absolute" b={30} l={20} icon={icons[theme]} onPress={toggle as any} circular />
+      <Button pos="absolute" b={40} l={30} icon={icons[theme]} onPress={toggle as any} circular />
     </YStack>
   )
 }

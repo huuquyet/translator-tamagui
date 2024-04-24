@@ -20,7 +20,7 @@
     "@tamagui/next-plugin": "latest",
     "@tamagui/next-theme": "latest",
     "@vercel/analytics": "^1.2.2",
-    "@xenova/transformers#v3": "https://github.com/xenova/transformers.js.git#commit=dda6a19d6f7fad767a98f9d135a70bba4269d3ff",
+    "@xenova/transformers": "^2.17.1",
     "jotai": "^2.8.0",
     "next": "^14.2.2",
     "onnxruntime-web": "^1.17.3",

@@ -1,7 +1,7 @@
 'use client'
 
 import { Languages } from '@tamagui/lucide-icons'
-import { type TranslationPipeline, pipeline } from '@xenova/transformers#v3'
+import { type TranslationPipeline, pipeline } from '@xenova/transformers'
 import { useEffect, useRef, useState } from 'react'
 import { Button, Spinner, TextArea, XStack, YStack } from 'tamagui'
 import { LanguageSelector } from './LanguageSelector'
@@ -47,8 +47,9 @@ export const Translator = ({
   useEffect(() => {
     pipelinePromise.current ??= pipeline(task, model, {
       // Use WebGPU v3 https://github.com/xenova/transformers.js/pull/545
-      device: 'webgpu',
-      dtype: 'fp32', // or 'fp16'
+      // device: 'webgpu',
+      // dtype: 'fp32', // or 'fp16'
+      quantized: true,
       progress_callback: (data: any) => {
         if (data.status !== 'progress') return
         setLoadProgress((prev) => ({ ...prev, [data.file]: data }))
