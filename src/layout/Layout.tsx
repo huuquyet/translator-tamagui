@@ -6,7 +6,17 @@ import { useAtom } from 'jotai'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import type { ReactNode } from 'react'
-import { Anchor, Button, H1, Separator, SizableText, Tooltip, XStack, YStack } from 'tamagui'
+import {
+  Anchor,
+  Button,
+  H1,
+  ScrollView,
+  Separator,
+  SizableText,
+  Tooltip,
+  XStack,
+  YStack,
+} from 'tamagui'
 
 const icons: any = {
   dark: <Moon />,
@@ -26,53 +36,55 @@ export default function Layout({ children }: { children: ReactNode }) {
   const pathname = usePathname()
 
   return (
-    <YStack f={1} h="100vh" jc="center" ai="center" p="$4" gap="$4">
-      <YStack gap="$4" bc="$" jc="center">
-        <H1 ta="center">Transformers.js + Tamagui</H1>
-        <SizableText ta="center">
-          ML-powered multilingual translation directly in your browser!
-        </SizableText>
-      </YStack>
+    <YStack f={1} h="100vh" w="100%" jc="center" ai="center" p="$4" gap="$4">
+      <ScrollView jc="center" p="$4" gap="$4">
+        <YStack gap="$4" bc="$" jc="center">
+          <H1 ta="center">Transformers.js + Tamagui</H1>
+          <SizableText ta="center">
+            ML-powered multilingual translation directly in your browser!
+          </SizableText>
+        </YStack>
 
-      <XStack gap="$4">
-        <SizableText>Model:</SizableText>
-        {navItems.map(({ label, slug, tooltip }) => (
-          <Tooltip placement="bottom" key={slug}>
-            <Tooltip.Trigger>
-              <Link
-                href={`/${slug}`}
-                style={{ textDecoration: `${pathname === `/${slug}` ? 'none' : 'underline'}` }}
-              >
-                <SizableText size="$4">{label}</SizableText>
-              </Link>
-            </Tooltip.Trigger>
-            <Tooltip.Content
-              enterStyle={{ x: 0, y: -5, opacity: 0, scale: 0.9 }}
-              exitStyle={{ x: 0, y: -5, opacity: 0, scale: 0.9 }}
-              scale={1}
-              x={0}
-              y={0}
-              opacity={1}
-              animation={[
-                'quick',
-                {
-                  opacity: {
-                    overshootClamping: true,
+        <XStack gap="$4">
+          <SizableText>Model:</SizableText>
+          {navItems.map(({ label, slug, tooltip }) => (
+            <Tooltip placement="bottom" key={slug}>
+              <Tooltip.Trigger>
+                <Link
+                  href={`/${slug}`}
+                  style={{ textDecoration: `${pathname === `/${slug}` ? 'none' : 'underline'}` }}
+                >
+                  <SizableText size="$4">{label}</SizableText>
+                </Link>
+              </Tooltip.Trigger>
+              <Tooltip.Content
+                enterStyle={{ x: 0, y: -5, opacity: 0, scale: 0.9 }}
+                exitStyle={{ x: 0, y: -5, opacity: 0, scale: 0.9 }}
+                scale={1}
+                x={0}
+                y={0}
+                opacity={1}
+                animation={[
+                  'quick',
+                  {
+                    opacity: {
+                      overshootClamping: true,
+                    },
                   },
-                },
-              ]}
-            >
-              <Tooltip.Arrow />
-              <SizableText size="$2" lineHeight="$1">
-                {tooltip}
-              </SizableText>
-            </Tooltip.Content>
-          </Tooltip>
-        ))}
-      </XStack>
-      <Separator als="stretch" />
+                ]}
+              >
+                <Tooltip.Arrow />
+                <SizableText size="$2" lineHeight="$1">
+                  {tooltip}
+                </SizableText>
+              </Tooltip.Content>
+            </Tooltip>
+          ))}
+        </XStack>
+        <Separator als="stretch" />
 
-      {children}
+        {children}
+      </ScrollView>
 
       <XStack pos="absolute" b="$4">
         <SizableText ta="center">

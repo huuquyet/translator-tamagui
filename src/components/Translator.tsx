@@ -3,7 +3,7 @@
 import { Languages } from '@tamagui/lucide-icons'
 import { type TranslationPipeline, pipeline } from '@xenova/transformers#v3'
 import { useEffect, useRef, useState } from 'react'
-import { Button, Separator, Spinner, TextArea, XStack, YStack } from 'tamagui'
+import { Button, Spinner, TextArea, XStack, YStack } from 'tamagui'
 import { LanguageSelector } from './LanguageSelector'
 import { MyProgress } from './MyProgress'
 
@@ -110,9 +110,15 @@ export const Translator = ({
             disableSelect={disableSelect}
             LANGUAGES={LANGUAGES}
           />
-          <TextArea value={input} size="$6" w="$20" rows={6} multiline onChange={setInput as any} />
+          <TextArea
+            value={input}
+            size="$6"
+            maw={340}
+            rows={6}
+            multiline
+            onChange={setInput as any}
+          />
         </YStack>
-        <Separator als="stretch" vertical />
 
         <YStack gap="$4">
           <LanguageSelector
@@ -122,7 +128,7 @@ export const Translator = ({
             disableSelect={disableSelect}
             LANGUAGES={LANGUAGES}
           />
-          <TextArea value={output} size="$6" w="$20" rows={6} multiline readOnly />
+          <TextArea value={output} size="$6" maw={340} rows={6} multiline readOnly />
         </YStack>
       </XStack>
 
