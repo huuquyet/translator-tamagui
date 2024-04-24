@@ -1,4 +1,9 @@
-export const MyProgress = ({ text, percentage }: { text: string; percentage: number }) => {
+interface MyProgressProps {
+  text: string
+  percentage: number
+}
+
+export const MyProgress = ({ text, percentage }: MyProgressProps) => {
   percentage = percentage ?? 0
   return (
     <>

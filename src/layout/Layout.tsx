@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import type { ReactNode } from 'react'
 
 const navItems: { label: string; slug: string; tooltip: string }[] = [
@@ -11,6 +12,8 @@ const navItems: { label: string; slug: string; tooltip: string }[] = [
 ]
 
 export default function Layout({ children }: { children: ReactNode }) {
+  const pathname = usePathname()
+
   return (
     <div className="container mx-auto p-2">
       <h1 className="text-5xl font-bold mb-2">Transformers.js + Next.js</h1>
@@ -26,7 +29,9 @@ export default function Layout({ children }: { children: ReactNode }) {
           <Link
             key={slug}
             href={`/${slug}`}
-            className="group relative inline-block text-blue-500 underline hover:text-red-500 duration-300"
+            className={`${
+              pathname === `/${slug}` ? 'disabled' : 'underline'
+            } group relative inline-block text-blue-500 hover:text-red-500 duration-300`}
           >
             {label}
             {/* Tooltip text here */}

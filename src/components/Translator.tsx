@@ -1,9 +1,19 @@
 'use client'
 
-import { pipeline } from '@xenova/transformers'
+import { pipeline } from '@xenova/transformers#v3'
 import { useEffect, useRef, useState } from 'react'
 import { LanguageSelector } from './LanguageSelector'
 import { MyProgress } from './MyProgress'
+
+interface TranslatorProps {
+  initSource: string
+  initTarget: string
+  model: string
+  example: string
+  size: string
+  disableSelect: boolean
+  langList: any
+}
 
 export default function Translator({
   initSource,
@@ -13,15 +23,7 @@ export default function Translator({
   size,
   disableSelect,
   langList,
-}: {
-  initSource: string
-  initTarget: string
-  model: string
-  example: string
-  size: string
-  disableSelect: boolean
-  langList: any
-}) {
+}: TranslatorProps) {
   // Model loading
   const [disabled, setDisabled] = useState(true)
   const [loadProgress, setLoadProgress] = useState({})
@@ -42,7 +44,9 @@ export default function Translator({
   // Load translator pipeline on first render
   useEffect(() => {
     pipelinePromise.current ??= pipeline(task, model, {
-      quantized: true,
+      // Use WebGPU v3 https://github.com/xenova/transformers.js/pull/545
+      device: 'webgpu',
+      dtype: 'fp32', // or 'fp16'
       progress_callback: (data) => {
         if (data.status !== 'progress') return
         setLoadProgress((prev) => ({ ...prev, [data.file]: data }))
@@ -88,11 +92,10 @@ export default function Translator({
           skip_special_tokens: true,
         })
         setOutput(decoded)
+        setStatusText('Done!')
+        setDisabled(false)
       },
     })
-
-    setStatusText('Done!')
-    setDisabled(false)
   }
 
   return (

@@ -1998,9 +1998,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@xenova/transformers@npm:^2.17.0":
-  version: 2.17.0
-  resolution: "@xenova/transformers@npm:2.17.0"
+"@xenova/transformers#v3@npm:^2.17.1":
+  version: 2.17.1
+  resolution: "@xenova/transformers#v3@npm:2.17.1::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2F%40xenova%2Ftransformers%2F-%2Ftransformers-2.17.1.tgz"
   dependencies:
     "@huggingface/jinja": "npm:^0.2.2"
     onnxruntime-node: "npm:1.14.0"
@@ -2009,7 +2009,7 @@ __metadata:
   dependenciesMeta:
     onnxruntime-node:
       optional: true
-  checksum: 10/325879fd296f3f2b4d70a40917a859d27b7a54f06208dd5c29620c305101ecd676c9c4aed0ea1eefb330104eeea36c6faf2937ff2348102211722a3f97370959
+  checksum: 10/c144c92c250905a73f0e3135febace6b4103e57f7d442a2a7cf81f9ba993c075ec0d907c87f369d60c277c5090cefdc73e9443a60472a250ce54c84c1fa97496
   languageName: node
   linkType: hard
 
@@ -5743,7 +5743,7 @@ __metadata:
     "@types/node": "npm:^20.12.7"
     "@types/react": "npm:^18.2.78"
     "@vercel/analytics": "npm:^1.2.2"
-    "@xenova/transformers": "npm:^2.17.0"
+    "@xenova/transformers#v3": "npm:^2.17.1"
     autoprefixer: "npm:^10.4.19"
     next: "npm:^14.2.1"
     onnxruntime-node: "npm:^1.17.0"

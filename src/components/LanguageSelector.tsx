@@ -1,16 +1,18 @@
+interface LanguageSelectorProps {
+  type: string
+  onChange: any
+  defaultLanguage: string
+  disableSelect: boolean
+  langList: any
+}
+
 export const LanguageSelector = ({
   type,
   onChange,
   defaultLanguage,
   disableSelect,
   langList,
-}: {
-  type: string
-  onChange: any
-  defaultLanguage: string
-  disableSelect: boolean
-  langList: any
-}) => {
+}: LanguageSelectorProps) => {
   return (
     <div className="w-1/2 p-2">
       <label>{type}: </label>
