@@ -20,7 +20,7 @@
     "@tamagui/next-plugin": "latest",
     "@tamagui/next-theme": "latest",
     "@vercel/analytics": "^1.2.2",
-    "@xenova/transformers#v3": "^2.17.1",
+    "@xenova/transformers#v3": "https://github.com/xenova/transformers.js.git#commit=dda6a19d6f7fad767a98f9d135a70bba4269d3ff",
     "jotai": "^2.8.0",
     "next": "^14.2.2",
     "onnxruntime-web": "^1.17.3",
@@ -37,7 +37,7 @@
     "expo-linear-gradient": "~12.7.2",
     "react-native": "0.0.0",
     "react-native-svg": "14.1.0",
-    "react-native-web": "^0.19.10",
+    "react-native-web": "^0.19.11",
     "sharp": "^0.33.3",
     "typescript": "^5.4.5"
   },

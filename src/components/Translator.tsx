@@ -63,7 +63,9 @@ export const Translator = ({
     let loaded = 0
     let total = 0
     for (const data of Object.values(loadProgress)) {
+      // @ts-ignore
       loaded += data.loaded
+      // @ts-ignore
       total += data.total
     }
     const progress = (loaded / total) * 100
