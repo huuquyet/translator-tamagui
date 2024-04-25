@@ -36,8 +36,8 @@ export default function Layout({ children }: { children: ReactNode }) {
   const pathname = usePathname()
 
   return (
-    <YStack f={1} h="100vh" w="100%" gap="$4">
-      <ScrollView mah="100vh" w="100%" jc="center" ai="center" p="$4" gap="$4">
+    <ScrollView h="100%" w="100%" br="$4">
+      <YStack f={1} h="100%" w="100%" jc="center" ai="center" p="$4" gap="$4">
         <YStack bc="$" jc="center" gap="$4">
           <H1 ta="center">Transformers.js + Tamagui</H1>
           <SizableText ta="center">
@@ -84,20 +84,20 @@ export default function Layout({ children }: { children: ReactNode }) {
         <Separator als="stretch" />
 
         {children}
-      </ScrollView>
 
-      <XStack pos="absolute" b="$4">
-        <SizableText ta="center">
-          Made with{' '}
-          <Anchor href="https://github.com/xenova/transformers.js">🤗 Transformers.js</Anchor>
-          {' + '}
-          <Anchor href="https://github.com/tamagui/tamagui">Tamagui 🪄</Anchor>
-          {'. '}
-          <Anchor href="https://github.com/huuquyet/tranlator-tamagui">Give it a ⭐️</Anchor>
-        </SizableText>
-      </XStack>
+        <XStack pos="absolute" b="$4">
+          <SizableText ta="center">
+            Made with{' '}
+            <Anchor href="https://github.com/xenova/transformers.js">🤗 Transformers.js</Anchor>
+            {' + '}
+            <Anchor href="https://github.com/tamagui/tamagui">Tamagui 🪄</Anchor>
+            {'. '}
+            <Anchor href="https://github.com/huuquyet/tranlator-tamagui">Give it a ⭐️</Anchor>
+          </SizableText>
+        </XStack>
 
-      <Button pos="absolute" b={40} l={30} icon={icons[theme]} onPress={toggle as any} circular />
-    </YStack>
+        <Button pos="absolute" b={40} l={30} icon={icons[theme]} onPress={toggle as any} circular />
+      </YStack>
+    </ScrollView>
   )
 }

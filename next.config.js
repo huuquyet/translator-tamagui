@@ -30,8 +30,8 @@ const plugins = [
 let nextConfig = {
   // (Optional) Export as a static site
   // See https://nextjs.org/docs/pages/building-your-application/deploying/static-exports#configuration
-  output: 'standalone', // Automatically copying traced files.
-  // distDir: './dist', // Changes the build output directory to `./dist/`.
+  output: 'export', // Outputs a Single-Page Application (SPA).
+  distDir: './dist', // Changes the build output directory to `./dist/`.
 
   typescript: {
     ignoreBuildErrors: true,

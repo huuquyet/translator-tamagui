@@ -117,8 +117,9 @@ export const Translator = ({
             value={input}
             size="$6"
             maw={340}
-            rows={6}
+            rows={7}
             multiline
+            br="$4"
             onChange={setInput as any}
           />
         </YStack>
@@ -131,7 +132,7 @@ export const Translator = ({
             disableSelect={disableSelect}
             LANGUAGES={LANGUAGES}
           />
-          <TextArea value={output} size="$6" maw={340} rows={6} multiline readOnly />
+          <TextArea value={output} size="$6" maw={340} rows={7} multiline br="$4" readOnly />
         </YStack>
       </XStack>
 
