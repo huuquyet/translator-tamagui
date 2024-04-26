@@ -45,6 +45,7 @@ export const Translator = ({
 
   // Load translator pipeline on first render
   useEffect(() => {
+    // @ts-ignore
     pipelinePromise.current ??= pipeline(task, model, {
       // Use WebGPU v3 https://github.com/xenova/transformers.js/pull/545
       // device: 'webgpu',
@@ -87,6 +88,7 @@ export const Translator = ({
 
     // Translate input text
     const outputs = await translator(input, {
+      // @ts-ignore
       src_lang: sourceLanguage,
       tgt_lang: targetLanguage,
 

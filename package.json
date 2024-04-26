@@ -24,15 +24,15 @@
     "jotai": "^2.8.0",
     "next": "^14.2.3",
     "onnxruntime-web": "^1.17.3",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0",
     "tamagui": "latest"
   },
   "devDependencies": {
     "@tamagui/config": "latest",
     "@tamagui/core": "latest",
     "@types/node": "^20.12.7",
-    "@types/react": "^18.2.79",
+    "@types/react": "^18.3.0",
     "@types/react-native": "^0.73.0",
     "expo-linear-gradient": "~12.7.2",
     "react-native": "0.0.0",
