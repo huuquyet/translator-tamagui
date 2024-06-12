@@ -15,6 +15,18 @@ const APP_DESCRIPTION = 'Translator demo app built with Transformer.js + Tamagui
 const APP_URL = 'https://hf.co/spaces/huuquyet/translator-tamagui/'
 const TWITTER = '@HuuQuyetNg'
 
+export default function RootLayout({ children }: { children: ReactNode }) {
+  return (
+    <html lang="en">
+      <head />
+      <body>
+        <Provider>{children}</Provider>
+        <Analytics />
+      </body>
+    </html>
+  )
+}
+
 export const metadata: Metadata = {
   applicationName: APP_NAME,
   title: {
@@ -42,7 +54,7 @@ export const metadata: Metadata = {
     },
     description: APP_DESCRIPTION,
     url: APP_URL,
-    images: ['/icon/share.png'],
+    images: ['/images/vercel.svg'],
   },
   twitter: {
     card: 'summary',
@@ -54,16 +66,4 @@ export const metadata: Metadata = {
     site: TWITTER,
   },
   keywords: ['Translator', 'Transformers.js', 'Next.js', 'Tamagui'],
-}
-
-export default function RootLayout({ children }: { children: ReactNode }) {
-  return (
-    <html lang="en">
-      <head />
-      <body>
-        <Provider>{children}</Provider>
-        <Analytics />
-      </body>
-    </html>
-  )
 }
