@@ -7,7 +7,7 @@ import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
 
 if (process.env.NODE_ENV === 'production') {
-  import.meta.resolve('../../public/tamagui.css')
+  require('../../public/tamagui.css')
 }
 
 const APP_NAME = 'Translator Demo'
