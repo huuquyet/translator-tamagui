@@ -1,6 +1,7 @@
 import { LinearGradient } from '@tamagui/linear-gradient'
 import { Check, ChevronDown, ChevronUp } from '@tamagui/lucide-icons'
-import { Adapt, Select, Sheet, SizableText, XStack, YStack } from 'tamagui'
+import { useMemo } from 'react'
+import { Adapt, Label, Select, Sheet, XStack, YStack } from 'tamagui'
 
 interface LanguageSelectorProps {
   type: string
@@ -18,9 +19,9 @@ export const LanguageSelector = ({
   LANGUAGES,
 }: LanguageSelectorProps) => {
   return (
-    <XStack f={1} ai="center" jc="space-evenly">
-      <SizableText>{type}: </SizableText>
-      <Select onValueChange={onChange} defaultValue={defaultLanguage}>
+    <XStack f={1} ai="center" jc="space-evenly" gap="$4">
+      <Label>{type}: </Label>
+      <Select onValueChange={onChange} value={defaultLanguage} disablePreventBodyScroll>
         <Select.Trigger w="$15" iconAfter={ChevronDown} disabled={disableSelect}>
           <Select.Value placeholder="Languages" />
         </Select.Trigger>
@@ -56,14 +57,18 @@ export const LanguageSelector = ({
           <Select.Viewport minWidth="$15">
             <Select.Group>
               <Select.Label>Languages</Select.Label>
-              {Object.entries(LANGUAGES).map(([key, value], index) => (
-                <Select.Item index={index} key={key} value={value}>
-                  <Select.ItemText>{key}</Select.ItemText>
-                  <Select.ItemIndicator ml="auto">
-                    <Check size={16} />
-                  </Select.ItemIndicator>
-                </Select.Item>
-              ))}
+              {useMemo(
+                () =>
+                  Object.entries(LANGUAGES).map(([key, value], index) => (
+                    <Select.Item index={index} key={key} value={value}>
+                      <Select.ItemText>{key}</Select.ItemText>
+                      <Select.ItemIndicator ml="auto">
+                        <Check size={16} />
+                      </Select.ItemIndicator>
+                    </Select.Item>
+                  )),
+                [LANGUAGES]
+              )}
             </Select.Group>
           </Select.Viewport>
           <Select.ScrollDownButton ai="center" jc="center" pos="relative" w="100%" h="$3">

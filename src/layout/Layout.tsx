@@ -3,20 +3,9 @@
 import { themeAtom } from '@/provider'
 import { Monitor, Moon, Sun } from '@tamagui/lucide-icons'
 import { useAtom } from 'jotai'
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
 import type { ReactNode } from 'react'
-import {
-  Anchor,
-  Button,
-  H1,
-  ScrollView,
-  Separator,
-  SizableText,
-  Tooltip,
-  XStack,
-  YStack,
-} from 'tamagui'
+import { Anchor, Button, H1, ScrollView, Separator, SizableText, XStack, YStack } from 'tamagui'
+import HorizontalTabs from './HorizontalTabs'
 
 const icons: any = {
   dark: <Moon />,
@@ -24,66 +13,22 @@ const icons: any = {
   system: <Monitor />,
 }
 
-const navItems: { label: string; slug: string; tooltip: string }[] = [
-  { label: 'NLLB200', slug: 'nllb200', tooltip: 'No Language Left Behind' },
-  { label: 'VinAI Vi-En', slug: 'vinaivi2en', tooltip: 'VinAI translate Vietnamese to English v2' },
-  { label: 'VinAI En-Vi', slug: 'vinaien2vi', tooltip: 'VinAI translate English to Vietnamese v2' },
-  { label: 'VietAI Vi-En', slug: 'vietai', tooltip: 'VietAI Vietnamese <-> English translation' },
-]
-
 export default function Layout({ children }: { children: ReactNode }) {
-  const [theme, toggle] = useAtom(themeAtom)
-  const pathname = usePathname()
+  const [scheme, toggle] = useAtom(themeAtom)
 
   return (
-    <ScrollView h="100%" w="100%" br="$4">
-      <YStack f={1} h="100%" w="100%" jc="center" ai="center" p="$4" gap="$4">
-        <YStack bc="$" jc="center" gap="$4">
+    <ScrollView h="100vh" w="100vw" br="$4">
+      <YStack f={1} h="100vh" w="100vw" jc="center" ai="center" p="$4" gap="$4">
+        <YStack jc="center" gap="$4">
           <H1 ta="center">Transformers.js + Tamagui</H1>
           <SizableText ta="center">
             ML-powered multilingual translation directly in your browser!
           </SizableText>
         </YStack>
 
-        <XStack jc="center" gap="$4">
-          <SizableText>Model:</SizableText>
-          {navItems.map(({ label, slug, tooltip }) => (
-            <Tooltip placement="bottom" key={slug}>
-              <Tooltip.Trigger>
-                <Link
-                  href={`/${slug}`}
-                  style={{ textDecoration: `${pathname === `/${slug}` ? 'none' : 'underline'}` }}
-                >
-                  <SizableText size="$4">{label}</SizableText>
-                </Link>
-              </Tooltip.Trigger>
-              <Tooltip.Content
-                enterStyle={{ x: 0, y: -5, opacity: 0, scale: 0.9 }}
-                exitStyle={{ x: 0, y: -5, opacity: 0, scale: 0.9 }}
-                scale={1}
-                x={0}
-                y={0}
-                opacity={1}
-                animation={[
-                  'quick',
-                  {
-                    opacity: {
-                      overshootClamping: true,
-                    },
-                  },
-                ]}
-              >
-                <Tooltip.Arrow />
-                <SizableText size="$2" lineHeight="$1">
-                  {tooltip}
-                </SizableText>
-              </Tooltip.Content>
-            </Tooltip>
-          ))}
-        </XStack>
-        <Separator als="stretch" />
+        <HorizontalTabs>{children}</HorizontalTabs>
 
-        {children}
+        <Separator als="stretch" />
 
         <XStack pos="absolute" b="$4">
           <SizableText ta="center">
@@ -96,7 +41,14 @@ export default function Layout({ children }: { children: ReactNode }) {
           </SizableText>
         </XStack>
 
-        <Button pos="absolute" b={40} l={30} icon={icons[theme]} onPress={toggle as any} circular />
+        <Button
+          pos="absolute"
+          b={40}
+          l={30}
+          icon={icons[scheme]}
+          onPress={toggle as any}
+          circular
+        />
       </YStack>
     </ScrollView>
   )

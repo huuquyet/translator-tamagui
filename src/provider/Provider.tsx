@@ -6,9 +6,9 @@ import { useAtom } from 'jotai'
 import { useServerInsertedHTML } from 'next/navigation'
 import type { ReactNode } from 'react'
 import { TamaguiProvider, type TamaguiProviderProps } from 'tamagui'
-import { config } from '../../tamagui.config'
+import { appConfig as config } from '../../tamagui.config'
 
-export const themeAtom = themeWithToggle('system' as mode)
+export const themeAtom = themeWithToggle('dark' as mode)
 
 const NextTamaguiProvider = ({ children, ...rest }: Omit<TamaguiProviderProps, 'config'>) => {
   const [_, setTheme] = useRootTheme()
@@ -62,7 +62,7 @@ export default function Provider({ children }: { children: ReactNode }) {
 
         <style jsx global>{`
           html {
-            font-family: ' ';
+            font-family: 'Inter';
           }
         `}</style>
       </>

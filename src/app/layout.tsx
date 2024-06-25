@@ -1,11 +1,13 @@
 import Provider from '@/provider'
 import '@tamagui/core/reset.css'
+import '@tamagui/font-inter/css/400.css'
+import '@tamagui/font-inter/css/700.css'
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
 
 if (process.env.NODE_ENV === 'production') {
-  require('../../public/tamagui.css')
+  import.meta.resolve('../../public/tamagui.css')
 }
 
 const APP_NAME = 'Translator Demo'
@@ -17,7 +19,7 @@ const TWITTER = '@HuuQuyetNg'
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head />
       <body>
         <Provider>{children}</Provider>

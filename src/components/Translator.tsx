@@ -1,5 +1,3 @@
-'use client'
-
 import { Languages } from '@tamagui/lucide-icons'
 import { type TranslationPipeline, pipeline } from '@xenova/transformers'
 import { useEffect, useRef, useState } from 'react'
@@ -105,7 +103,7 @@ export const Translator = ({
   }
 
   return (
-    <>
+    <YStack gap="$4">
       <XStack gap="$4">
         <YStack gap="$4">
           <LanguageSelector
@@ -147,6 +145,6 @@ export const Translator = ({
       </Button>
 
       <MyProgress text={statusText} percentage={progress} />
-    </>
+    </YStack>
   )
 }
