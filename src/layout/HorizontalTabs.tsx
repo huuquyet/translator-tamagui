@@ -20,7 +20,7 @@ const navItems: { label: string; slug: string; tooltip: string }[] = [
   { label: 'VietAI Vi-En', slug: 'vietai', tooltip: 'VietAI Vietnamese <-> English translation' },
 ]
 
-export default function HorizontalTabs({ children }: { children: ReactNode }) {
+export default function HorizontalTabs({ children }: { children?: ReactNode }) {
   const pathname = usePathname()
   const [tabState, setTabState] = useState<{
     currentTab: string

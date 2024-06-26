@@ -13,7 +13,7 @@ const icons: any = {
   system: <Monitor />,
 }
 
-export default function Layout({ children }: { children: ReactNode }) {
+export default function Layout({ children }: { children?: ReactNode }) {
   const [scheme, toggle] = useAtom(themeAtom)
 
   return (

@@ -53,7 +53,7 @@ export const Translator = ({
       quantized: true,
       progress_callback: (data: any) => {
         if (data.status !== 'progress') return
-        setLoadProgress((prev) => ({ ...prev, [data.file]: data }))
+        setLoadProgress((prev: any) => ({ ...prev, [data.file]: data }))
       },
     })
   }, [])
@@ -122,7 +122,7 @@ export const Translator = ({
             rows={7}
             multiline
             br="$4"
-            onChange={setInput as any}
+            onChangeText={setInput}
           />
         </YStack>
 
@@ -139,6 +139,7 @@ export const Translator = ({
       </XStack>
 
       <Button
+        size="$4"
         disabled={disabled}
         icon={disabled ? <Spinner size="small" /> : <Languages />}
         onPress={translate}
