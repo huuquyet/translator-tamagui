@@ -14,10 +14,10 @@ import {
 } from 'tamagui'
 
 const navItems: { label: string; slug: string; tooltip: string }[] = [
-  { label: 'NLLB200', slug: 'Nllb200', tooltip: 'No Language Left Behind' },
-  { label: 'VinAI Vi-En', slug: 'VinAIVi2En', tooltip: 'VinAI translate Vietnamese to English v2' },
-  { label: 'VinAI En-Vi', slug: 'VinAIEn2Vi', tooltip: 'VinAI translate English to Vietnamese v2' },
-  { label: 'VietAI Vi-En', slug: 'VietAI', tooltip: 'VietAI Vietnamese <-> English translation' },
+  { label: 'NLLB200', slug: 'nllb200', tooltip: 'No Language Left Behind' },
+  { label: 'VinAI Vi-En', slug: 'vinaivi2en', tooltip: 'VinAI translate Vietnamese to English v2' },
+  { label: 'VinAI En-Vi', slug: 'vinaien2vi', tooltip: 'VinAI translate English to Vietnamese v2' },
+  { label: 'VietAI Vi-En', slug: 'vietai', tooltip: 'VietAI Vietnamese <-> English translation' },
 ]
 
 export default function HorizontalTabs({ children }: { children: ReactNode }) {

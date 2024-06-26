@@ -3,5 +3,5 @@
 import { permanentRedirect } from 'next/navigation'
 
 export default function Page() {
-  permanentRedirect('/Nllb200')
+  permanentRedirect('/nllb200')
 }

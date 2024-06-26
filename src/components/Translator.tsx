@@ -1,3 +1,5 @@
+'use client'
+
 import { Languages } from '@tamagui/lucide-icons'
 import { type TranslationPipeline, pipeline } from '@xenova/transformers'
 import { useEffect, useRef, useState } from 'react'
