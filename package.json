@@ -19,7 +19,7 @@
     "@tamagui/next-theme": "latest",
     "@vercel/analytics": "^1.3.1",
     "@xenova/transformers": "^2.17.2",
-    "jotai": "^2.8.3",
+    "jotai": "^2.8.4",
     "next": "^14.2.4",
     "onnxruntime-web": "^1.18.0",
     "react": "^18.3.1",
@@ -29,14 +29,14 @@
   "devDependencies": {
     "@tamagui/config": "latest",
     "@tamagui/core": "latest",
-    "@types/bun": "^1.1.5",
+    "@types/bun": "^1.1.6",
     "@types/react": "^18.3.3",
     "@types/react-native": "^0.73.0",
     "expo-linear-gradient": "~13.0.2",
-    "react-native": "0.0.0",
+    "react-native": "0.74.3",
     "react-native-svg": "15.3.0",
     "react-native-web": "^0.19.12",
     "sharp": "^0.33.4",
-    "typescript": "^5.5.2"
+    "typescript": "^5.5.3"
   }
 }
